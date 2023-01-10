@@ -1,7 +1,8 @@
 const drags=document.querySelectorAll('.dragimg')
 const drops=document.querySelectorAll('#dropbox')
-let a = []
-let b = ["", "", ""]
+let a=[]
+let b=["", "", ""]
+let temp
 
 drags.forEach(function(dragbox){
     dragbox.addEventListener('dragstart', dragStart)
@@ -46,15 +47,14 @@ function drop(e){
 }
 
 function loginclick(key){
-    console.log("A")
+    let username=document.getElementById("username").value
+    let code=document.getElementById("code").value
     for(i=0;i<3;i=i+1){
         b[i]=a[i]
     }
     if(key==0){
-        let username=document.getElementById("username").value
-        let code=document.getElementById("code").value
         b.sort()
-        let tamp=b[0]
+        tamp=b[0]
         b[0]=b[2]
         b[2]=tamp
         console.log(b);
@@ -64,8 +64,6 @@ function loginclick(key){
             location.href="login.php?vererror=true&username="+username+"&code="+code
         }
     }else{
-        let username=document.getElementById("username").value
-        let code=document.getElementById("code").value
         b.sort()
         console.log(b);
         if(JSON.stringify(a)==JSON.stringify(b)){

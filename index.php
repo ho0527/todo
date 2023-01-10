@@ -10,8 +10,8 @@
             <?php session_start(); ?>
             <h1>TODO工作管理系統</h1>
             <h3>
-                帳號: <input type="text" name="username" id="username" value="<?= @$_SESSION['username'] ?>"><br>
-                密碼: <input type="password" name="code" id="code" value="<?= @$_SESSION['password'] ?>"><br>
+                帳號: <input type="text" name="username" id="username" value="<?= @$_SESSION["username"] ?>"><br>
+                密碼: <input type="password" name="code" id="code" value="<?= @$_SESSION["password"] ?>"><br>
             </h3>
             <class class="text">驗證碼:</class><br>
             <?php
@@ -24,7 +24,7 @@
                     </div>
                     <?php
                 }
-            ?> 
+            ?>
             <input type="submit" name="reflashpng" value="重新產生">
             <h6>請拖動驗證碼圖片
                 <?php
