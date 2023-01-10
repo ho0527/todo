@@ -38,7 +38,7 @@
                     $userdata2=mysqli_query($db,"SELECT*FROM `admin` WHERE `adminName`='$username'");
                     $row2=mysqli_fetch_row($userdata2);
                     mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                    VALUES('$row2[4]','$row[1]','$row[2]','$row[3]','管理者','-','-','signup','$time')");
+                    VALUES('$row2[4]','$row[1]','$row[2]','$row[3]','管理者','-','-','註冊','$time')");
                     header("Location:adminWelcome.php");
                 }else{
                     mysqli_query($db,"INSERT INTO `user`(`userName`,`userCode`,`name`)VALUES('$username','$code','$name')");
@@ -49,7 +49,7 @@
                     $userdata=mysqli_query($db,"SELECT*FROM `user` WHERE `userName`='$username'");
                     $row2=mysqli_fetch_row($userdata);
                     mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                    VALUES('$row2[4]','$row[1]','$row[2]','$row[3]','一般使用者','-','-','singup','$time')");
+                    VALUES('$row2[4]','$row[1]','$row[2]','$row[3]','一般使用者','-','-','註冊','$time')");
                     header("Location:adminWelcome.php");
                 }
             }

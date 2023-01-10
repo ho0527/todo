@@ -20,7 +20,7 @@
                                 $date=$_SESSION["date"];
                                 echo("目前日期: ".$date);
                             ?><br>
-                                <input type="date" id="date" value="" name="date">  
+                                <input type="date" id="date" value="" name="date">
                                 <button type="submit" name="enter" id="date-button">送出</button>
                                 <script src="todaydate.js"></script>
                         </form>
@@ -161,12 +161,12 @@
                     if(isset($user_data)){
                         mysqli_query($db,"UPDATE `data` SET `logouttime`='$time' WHERE `usernumber`='$user_data' AND `logouttime`=''");
                         mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                        VALUES('$user_data','$row[1]','$row[2]','$row[3]','一般使用者','-','-','logout','$time')");
+                        VALUES('$user_data','$row[1]','$row[2]','$row[3]','一般使用者','-','-','登出','$time')");
                         ?><script>alert("登出成功!");location.href="index.php"</script><?php
                         session_unset();
                     }else{
                         mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                        VALUES('null','','','','','','','logout','$time')");
+                        VALUES('null','','','','','','','登出','$time')");
                         ?><script>alert("登出成功!");location.href="index.php"</script><?php
                         session_unset();
                     }

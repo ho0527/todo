@@ -37,7 +37,7 @@
                         mysqli_query($db,"UPDATE `user` SET `name`='$name',`userCode`='$code',`userName`='$username' WHERE `userNumber`='$user_data'");
                         $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `user` WHERE `userNumber`='$user_data'"));
                         mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                        VALUES('$user_data','$row[1]','$row[2]','$row[3]','一般使用者','-','-','editbyuser','$time')");
+                        VALUES('$user_data','$row[1]','$row[2]','$row[3]','一般使用者','-','-','用戶編輯','$time')");
                         ?><script>alert("更改成功!");location.reload();</script><?php
                     }else{
                         echo("請填寫帳密");

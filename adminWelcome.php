@@ -49,12 +49,12 @@
                            if(isset($admin_data)){
                               mysqli_query($db,"UPDATE `data` SET `logouttime`='$time' WHERE `usernumber`='$admin_data' AND `logouttime`=''");
                               mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                              VALUES('$admin_data','$row[1]','$row[2]','$row[3]','管理者','-','-','logout','$time')");
+                              VALUES('$admin_data','$row[1]','$row[2]','$row[3]','管理者','-','-','登出','$time')");
                               ?><script>alert("登出成功!");location.href="index.php"</script><?php
                               session_unset();
                            }else{
                               mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                              VALUES('null','','','','','','','logout','$time')");
+                              VALUES('null','','','','','','','登出','$time')");
                               ?><script>alert("登出成功!");location.href="index.php"</script><?php
                               session_unset();
                            }
@@ -65,12 +65,12 @@
                            $admin=mysqli_query($db,"SELECT*FROM `admin` WHERE `adminNumber`='$number'");
                            if($row=mysqli_fetch_row($user)){
                               mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                              VALUES('$number','$row[1]','$row[2]','$row[3]','一般使用者','-','-','delbyadmin','$time')");
+                              VALUES('$number','$row[1]','$row[2]','$row[3]','一般使用者','-','-','管理員刪除','$time')");
                               mysqli_query($db,"DELETE FROM `user` WHERE `userNumber`='$number'");
                               ?><script>alert("刪除成功!");location.href="adminWelcome.php"</script><?php
                            }elseif($row=mysqli_fetch_row($admin)){
                               mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                              VALUES('$number','$row[1]','$row[2]','$row[3]','管理者','-','-','delbyadmin','$time')");
+                              VALUES('$number','$row[1]','$row[2]','$row[3]','管理者','-','-','管理員刪除','$time')");
                               mysqli_query($db,"DELETE FROM `admin` WHERE `adminNumber`='$number'");
                               ?><script>alert("刪除成功!");location.href="adminWelcome.php"</script><?php
                            }else{

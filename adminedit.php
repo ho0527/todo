@@ -53,7 +53,7 @@
                             mysqli_query($db,"UPDATE `user` SET `name`='$name',`userCode`='$code',`userName`='$username' WHERE `userNumber`='$number'");
                             $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `user` WHERE `userNumber`='$number'"));
                             mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                            VALUES('$number','$row[1]','$row[2]','$row[3]','一般使用者','-','-','editbyadmin','$time')");
+                            VALUES('$number','$row[1]','$row[2]','$row[3]','一般使用者','-','-','管理員編輯','$time')");
                             ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
                         }else{
                             echo("請填寫帳密");
@@ -63,10 +63,8 @@
                     if($row[4]==$number){
                         if($username!=""&&$code!=""){
                             mysqli_query($db,"UPDATE `admin` SET `name`='$name',`adminCode`='$code',`adminName`='$username' WHERE `adminnumber`='$number'");
-                            mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                            VALUES('$number','$row[1]','$row[2]','$row[3]','管理者','-','-','editbyadmin','$time')");
                             $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `admin` WHERE `adminNumber`='$number'"));
-                            mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`move`,`movetime`)VALUES('$number','$row[1]','$row[2]','$row[3]','管理者','editbyadmin','$time')");
+                            mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`move`,`movetime`)VALUES('$number','$row[1]','$row[2]','$row[3]','管理者','管理員編輯','$time')");
                             header("location:adminedit?number=$number");
                             ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
                         }else{

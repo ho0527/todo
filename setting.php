@@ -25,7 +25,7 @@
                 if($row=mysqli_fetch_row($user)){
                     $del=mysqli_query($db,"DELETE FROM `user` WHERE `userNumber`='$user_data'");
                     mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                    VALUES('$user_data','$row[1]','$row[2]','$row[3]','一般使用者','-','-','delbyuser','$time')");
+                    VALUES('$user_data','$row[1]','$row[2]','$row[3]','一般使用者','-','-','用戶刪除','$time')");
                     ?><script>alert("刪除成功");location.href="index.php"</script><?php
                 }else{
                     echo("請先登入");
