@@ -164,10 +164,10 @@
 
 .work-box{
     background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 25px;
+    border-radius: 15px;
     border: 0.5px rgb(0, 0, 0) solid;
     text-align: center;
-    line-height: 2.5;
+    line-height: 1.5;
     width: 150px;
     font-size: 12px;
     position:absolute;
@@ -206,7 +206,7 @@
     border: 0.5px rgb(0, 0, 0) solid;
     width: 200px;
     height: 150px;
-    position: absolute;
-    top:650px;
-    right:25px;
+    position: relative;
+    top: 500px;
+    left:20px;
 }

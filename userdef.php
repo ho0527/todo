@@ -8,6 +8,7 @@
         結束時間: <?php echo($row[4]); ?><br>
         處理狀態: <?php echo($row[5]); ?><br>
         優先順序: <?php echo($row[6]); ?><br>
+        詳細內容: <?php echo($row[7]); ?><br>
         <?php
     }
 

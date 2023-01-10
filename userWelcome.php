@@ -141,11 +141,11 @@
                             $id=$_GET["preview"];
                             @$row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `todo` WHERE `id`='$id'"));
                             ?>
-                            <span class="div">
+                            <div class="div">
                                 標題: <?= @$row[1]; ?><br>
                                 詳細內容: <?= @$row[7]; ?>
                                 <button onclick="location.href='userWelcome.php'" id="button4">關閉</button>
-                            </span>
+                            </div>
                             <?php
                         }
                     ?>
