@@ -33,7 +33,7 @@ buttons.forEach(function(button){
                 otherButton.value="升冪"
             }
         })
-        if(button.value=="升冪"){
+        if(start.value=="升冪"){
             uper.style.display="inline"
             lower.style.display="none"
         }else{
@@ -42,3 +42,4 @@ buttons.forEach(function(button){
         }
     }
 })
+
