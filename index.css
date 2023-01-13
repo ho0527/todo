@@ -147,20 +147,20 @@
 
 .user-table2{
     border: 0.5px black solid;
-    width:1300px;
+    width:1250px;
     text-align: center;
 }
 
 .user-table4{
     border: 0.5px black solid;
-    height:825px;
+    height:800px;
     text-align: left;
     vertical-align: top;
 }
 
 .todo{
     border: 0.5px black solid;
-    height: 825px;
+    height: 800px;
     text-align: center;
 }
 
@@ -258,12 +258,21 @@
 }
 
 .div{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size:15px;
+    font-weight:bold;
+    background-color: rgb(125, 125, 125);
     border: 0.5px rgb(0, 0, 0) solid;
-    width: 200px;
-    height: 150px;
+    width: 175px;
+    height: 125px;
     position: relative;
     top: 500px;
     left:20px;
+    word-wrap:break-word;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
 }
 
 .useradd{
