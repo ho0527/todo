@@ -23,14 +23,42 @@ for(let i=0;i<todoeditblock.length;i=i+1){
     })
 }
 
-let boxid=undefined
-document.querySelectorAll('.work-box').forEach(function(element){
+let down=false
+let move=false
+
+document.querySelectorAll(".todo").forEach(function(element){
     element.addEventListener("mousedown",function(){
-        boxid=this.id
+        console.log("")
+        down=true
     })
 })
 document.querySelectorAll(".todo").forEach(function(element){
     element.addEventListener("mousemove",function(event){
+        if(down==true){
+            move=true
+        }
+    })
+})
+document.querySelectorAll(".todo").forEach(function(element){
+    element.addEventListener("mouseup",function(){
+        if(move==true){
+            location.href="useradd.php"
+        }
+    })
+})
+
+let boxid=undefined
+document.querySelectorAll('.work-box').forEach(function(element){
+    element.addEventListener("mousedown",function(){
+        console.log("mousedown")
+        boxid=this.id
+        down=false
+        move=false
+    })
+})
+document.querySelectorAll(".todo").forEach(function(element){
+    element.addEventListener("mousemove",function(event){
+        console.log("mousemove")
         if(boxid==undefined){
             return
         }
