@@ -179,7 +179,7 @@
                 }else{
                     ?>
                     <form>
-                        <div class="indextitle">工作編輯</div>
+                        <div class="indextitle">新增工作</div>
                         工作標題:<input type="text" name="title" value="work<?php ?>" id="title"><br>
                         日期: <input type="date" value="<?= $_SESSION["date"] ?>" name="date"><br>
                         開始時間:

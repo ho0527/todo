@@ -11,10 +11,10 @@
                 <?php session_start(); ?>
                 <class class="indextitle">TODO工作管理系統</class><br>
                 <div class="text">
-                    帳號: <input type="text" name="username" id="username" value="<?= @$_SESSION["username"] ?>" class="logininput"><br>
+                    帳號: <input type="text" name="username" id="username" value="<?= @$_SESSION["username"] ?>" class="input"><br>
                 </div>
                 <div class="text">
-                    密碼: <input type="password" name="code" id="code" value="<?= @$_SESSION["password"] ?>" class="logininput"><br>
+                    密碼: <input type="password" name="code" id="code" value="<?= @$_SESSION["password"] ?>" class="input"><br>
                 </div>
                 <class class="text">驗證碼:</class><br>
                 <?php

@@ -25,10 +25,8 @@ for(let i=0;i<todoeditblock.length;i=i+1){
 
 let down=false
 let move=false
-
 document.querySelectorAll(".todo").forEach(function(element){
     element.addEventListener("mousedown",function(){
-        console.log("")
         down=true
     })
 })
@@ -104,3 +102,44 @@ document.querySelectorAll(".todo").forEach(function(element){
         xhr.send()
     })
 })
+
+//let boxid=undefined
+//$('.work-box').on("mousedown",function(){
+//    boxid=this.id
+//})
+//$(".todo").on("mousemove",function(event){
+//    console.log("mousemove")
+//    if(boxid==undefined){
+//        return
+//    }
+//    let box=document.getElementById(boxid)
+//    let y=event.pageY
+//    console.log("y="+y)
+//    let start=Math.floor((y-100)/50)
+//    let height=box.css("height").replace("px","")/50
+//    if(start<0){
+//        start=0
+//    }
+//    if(start+height>48){
+//        start=48-height
+//    }
+//    let end=start+height
+//    let top=start*50+110
+//    box.css("top",top)
+//    start=(start%2==0)?String(start/2).padStart(2,"0")+":00":String(start/2-0.5).padStart(2,"0")+":30"
+//    end=(end%2==0)?String(end/2).padStart(2,"0")+":00":String(end/2-0.5).padStart(2,"0")+":30"
+//})
+//$(".todo").on("mouseup",function(event){
+//    console.log("up")
+//    let box=document.getElementById(boxid)
+//    let height=box.css("height").replace("px","")/50
+//    let start=(box.css("height").replace("px","")-110)/50
+//    let end=start+height
+//    $.ajax({
+//        url:"userWelcome.php?boxid="+boxid+"&start="+start+"&end="+end,
+//        type:"get",
+//        success: function(){
+//            //location.reload()
+//        }
+//    })
+//})

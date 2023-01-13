@@ -13,30 +13,16 @@
     }
 
     function uper($todo){
-        if(isset($_SESSION["date"])){
-            while($row=mysqli_fetch_row($todo)){
-                $start_time=substr($row[3],0,2)*60+substr($row[3],3,5);
-                $hr=substr($row[4],0,2)-substr($row[3],0,2);
-                $min=substr($row[4],3,5)-substr($row[3],3,5);
-                if($start_time>=960){
-                    ?>
-                    <div class="work-box" id="<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15)+10; ?>px;top:<?= 145+($start_time/2)+20; ?>px;left:230px;">
-                        <?php data($row); ?>
-                    </div>
-                    <?php
-                }elseif($start_time>=600){
-                    ?>
-                    <div class="work-box" id="<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15)+10; ?>px;top:<?= 145+($start_time/2)+15; ?>x;left:230px;">
-                        <?php data($row); ?>
-                    </div>
-                    <?php
-                }else{
-                    ?>
-                    <div class="work-box" id="<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15)+10; ?>px;top:<?= 145+($start_time/2)+5; ?>px;left:230px;">
-                        <?php data($row); ?>
-                    </div>
-                    <?php
-                }
+    if(isset($_SESSION["date"])){
+        while($row=mysqli_fetch_row($todo)){
+            $start_time=substr($row[3],0,2)*60+substr($row[3],3,5);
+            $hr=substr($row[4],0,2)-substr($row[3],0,2);
+            $min=substr($row[4],3,5)-substr($row[3],3,5);
+            ?>
+            <div class="work-box" id="up<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15); ?>px;top:<?= 145+($start_time/2)+15; ?>px;left:230px;">
+                <?php data($row); ?>
+            </div>
+            <?php
             }
         }
     }
@@ -44,28 +30,14 @@
     function lower($todo){
         if(isset($_SESSION["date"])){
             while($row=mysqli_fetch_row($todo)){
-                $end_time=substr($row[4],0,2)*60+substr($row[4],3,5);
+                $end_time=substr($row[3],0,2)*60+substr($row[3],3,5);
                 $hr=substr($row[4],0,2)-substr($row[3],0,2);
                 $min=substr($row[4],3,5)-substr($row[3],3,5);
-                if($end_time>=960){
-                    ?>
-                    <div class="work-box" id="<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15)+15; ?>px;top:<?= 145+(($end_time-1155)/2)+335; ?>px;left:230px;">
-                        <?php data($row); ?>
-                    </div>
-                    <?php
-                }elseif($end_time>=600){
-                    ?>
-                    <div class="work-box" id="<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15)+15; ?>px;top:<?= 145+(($end_time-125)/2)+165; ?>px;left:230px;">
-                        <?php data($row); ?>
-                    </div>
-                    <?php
-                }else{
-                    ?>
-                    <div class="work-box" id="<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15)+15; ?>px;top:<?= 145+(($end_time+960)/2)-110; ?>px;left:230px;">
-                        <?php data($row); ?>
-                    </div>
-                    <?php
-                }
+                ?>
+                <div class="work-box" id="down<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15); ?>px;bottom:<?= (($end_time)/2)+55; ?>px;left:230px;">
+                    <?php data($row); ?>
+                </div>
+                <?php
             }
         }
     }
