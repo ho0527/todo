@@ -1,5 +1,7 @@
-.body{
-    background-color:rgba(244, 236, 236, 0.37) ;
+body{
+    width: 1920px;
+    height: 1080px;
+    background-color:rgba(244, 236, 236, 0.37);
 }
 
 .indextitle{
@@ -31,6 +33,7 @@
     height: 280px;
     width: 275px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+    user-select: none;
 }
 
 .input{
@@ -110,6 +113,7 @@
     height: 200px;
     width: 300px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+    user-select: none;
 }
 
 .admin-title{
@@ -284,15 +288,16 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform:  translate(-50%, -50%) scale(2);
+    transform:  translate(-50%, -50%) scale(2.5);
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgb(125, 125, 125);
     border-radius: 25px;
-    height: auto;
+    height: 350px;
     width: 300px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
+    user-select: none;
 }
 
 .buttoncof{
