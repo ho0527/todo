@@ -168,6 +168,11 @@ body{
     text-align: center;
 }
 
+.all{
+    border: 0.5px black solid;
+    width: 350px;
+}
+
 .newtodo{
     text-align: left;
     vertical-align: bottom;

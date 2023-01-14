@@ -34,6 +34,7 @@
                     </class>
                 </td>
                 <td class="title">一般會員專區</td>
+                <td class="all" rowspan="2"></td>
             </tr>
             <tr>
                 <td class="todo">
