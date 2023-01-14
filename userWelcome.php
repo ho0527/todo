@@ -34,7 +34,49 @@
                     </class>
                 </td>
                 <td class="title">一般會員專區</td>
-                <td class="all" rowspan="2"></td>
+                <td class="all" rowspan="2">
+                    <table>
+                        <form>
+                            <tr>
+                                <td class="usertable">編號<input type="button" id="num-up-down"></td>
+                                <td class="usertable">標題<input type="button" id="title-up-down"></td>
+                                <td class="usertable">日期<input type="button" id="time-up-down"></td>
+                                <td class="usertable">時間<input type="button" id="date-up-down"></td>
+                                <td class="usertable">處理情形<input type="button" id="deal-up-down"></td>
+                                <td class="usertable">優先順序<input type="button" id="priority-up-down"></td>
+                                <td class="usertable">詳細內容</td>
+                            </tr>
+                            <?php
+                                $data=mysqli_query($db,"SELECT*FROM `todo`");
+                                if(isset($_GET["up_down"])){
+                                    $numberud=$_GET["num-up-down"];
+                                    $titleud=$_GET["title-up-down"];
+                                    $timeud=$_GET["time-up-down"];
+                                    $dateud=$_GET["date-up-down"];
+                                    $dealud=$_GET["deal-up-down"];
+                                    $priorityud=$_GET["priority-up-down"];
+                                    if($numberud=="降冪"){
+                                        down($data,"id");
+                                    }elseif($titleud=="降冪"){
+                                        down($data,"title");
+                                    }elseif($timeud=="降冪"){
+                                        down($data,"date");
+                                    }elseif($dateud=="降冪"){
+                                        down($data,"start_time");
+                                    }elseif($dealud=="降冪"){
+                                        down($data,"deal");
+                                    }elseif($priorityud=="降冪"){
+                                        down($data,"priority");
+                                    }else{
+                                        up($data,"id");
+                                    }
+                                }else{
+                                    up($data,"id");
+                                }
+                            ?>
+                        </form>
+                    </table>
+                </td>
             </tr>
             <tr>
                 <td class="todo">
@@ -138,6 +180,7 @@
                         <button type="button" id="setting-button" class="setting-button" onclick="location.href='setting.php'">setting</button>
                         <button type="submit" id="loggout-button" class="loggout-button" name="logout">logout</button>
                         <button type="button" id="user-button" class="user-button">用戶</button>
+                        <button type="button" class="right" onclick="submitbut()">確定(升降冪)</button>
                     </form>
                     <?php
                         if(isset($_GET["preview"])){
