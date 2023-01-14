@@ -68,7 +68,7 @@
                                     }elseif($priorityud=="降冪"){
                                         down($data,"priority");
                                     }else{
-                                        up($data,"id");
+                                        header("location:userWelcome.php");
                                     }
                                 }else{
                                     up($data,"id");
