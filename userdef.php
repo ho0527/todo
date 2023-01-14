@@ -34,7 +34,7 @@
                 $hr=substr($row[4],0,2)-substr($row[3],0,2);
                 $min=substr($row[4],3,5)-substr($row[3],3,5);
                 ?>
-                <div class="work-box" id="down<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15); ?>px;bottom:<?= 145+(($end_time)/2)+100; ?>px;left:230px;">
+                <div class="work-box" id="down<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15)+20; ?>px;bottom:<?= 145+(($end_time)/2)+100; ?>px;left:230px;">
                     <?php data($row); ?>
                 </div>
                 <?php
