@@ -6,40 +6,42 @@
         <title>重設帳密</title>
     </head>
     <body>
-        <form>
-            <?php
-                include("link.php");
-                if(isset($_GET["number"])){
-                    $number=$_GET["number"];
-                    $user=mysqli_query($db,"SELECT*FROM `user` WHERE `userNumber`='$number'");
-                    $admin=mysqli_query($db,"SELECT*FROM `admin` WHERE `adminNumber`='$number'");
-                    if($row=mysqli_fetch_row($user)){
-                        ?>
-                        <from>
-                            帳號id: <input type="text" name="number" value="<?php echo($number); ?>" readonly><br><br>
-                            用戶帳號: <input type="text" name="username" value="<?php echo($row[1]); ?>"><br><br>
-                            用戶名: <input type="text" name="name" value="<?php echo($row[3]); ?>"><br><br>
-                            密碼: <input type="text" name="code" value="<?php echo($row[2]); ?>"><br><br>
-                            <button name="enter">更改帳號</button>
-                        </from>
-                        <?php
-                    }elseif($row=mysqli_fetch_row($admin)){
-                        ?>
-                        <from>
-                            帳號id: <input type="text" name="number" value="<?php echo($number); ?>" readonly><br><br>
-                            用戶帳號: <input type="text" name="username" value="<?php echo($row[1]); ?>"><br><br>
-                            用戶名: <input type="text" name="name" value="<?php echo($row[3]); ?>"><br><br>
-                            密碼: <input type="text" name="code" value="<?php echo($row[2]); ?>"><br><br>
-                            <button name="enter">更改帳號</button>
-                        </from>
-                        <?php
-                    }else{
-                        echo("帳號已被刪除"."<br>");
+        <div class="signupdiv">
+            <form>
+                <?php
+                    include("link.php");
+                    if(isset($_GET["number"])){
+                        $number=$_GET["number"];
+                        $user=mysqli_query($db,"SELECT*FROM `user` WHERE `userNumber`='$number'");
+                        $admin=mysqli_query($db,"SELECT*FROM `admin` WHERE `adminNumber`='$number'");
+                        if($row=mysqli_fetch_row($user)){
+                            ?>
+                            <from class="text">
+                                編號: <input type="text" name="number" value="<?php echo($number); ?>" readonly><br><br>
+                                帳號: <input type="text" name="username" value="<?php echo($row[1]); ?>"><br><br>
+                                用戶名: <input type="text" name="name" value="<?php echo($row[3]); ?>"><br><br>
+                                密碼: <input type="text" name="code" value="<?php echo($row[2]); ?>"><br><br>
+                                <button name="enter">更改帳號</button>
+                            </from>
+                            <?php
+                        }elseif($row=mysqli_fetch_row($admin)){
+                            ?>
+                            <from>
+                                編號: <input type="text" name="number" value="<?php echo($number); ?>" readonly><br><br>
+                                帳號: <input type="text" name="username" value="<?php echo($row[1]); ?>"><br><br>
+                                用戶名: <input type="text" name="name" value="<?php echo($row[3]); ?>"><br><br>
+                                密碼: <input type="text" name="code" value="<?php echo($row[2]); ?>"><br><br>
+                                <button name="enter">更改帳號</button>
+                            </from>
+                            <?php
+                        }else{
+                            echo("帳號已被刪除"."<br>");
+                        }
                     }
-                }
-            ?>
-        </form><br>
-        <button id="go_back" onclick="location.href='adminWelcome.php'">返回主頁</button><br>
+                ?>
+                <button type="button" id="go_back" onclick="location.href='adminWelcome.php'">返回主頁</button>
+            </form>
+        </div>
         <?php
             if(array_key_exists("enter",$_GET)){
                 $username=$_GET["username"];
