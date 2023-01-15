@@ -17,8 +17,9 @@
                     if($_SESSION["error"]<3){
                         ?><script>alert("圖形驗證碼有誤");location.href="index.php"</script><?php
                     }else{
+                        ?><script>alert("圖形驗證碼有誤");</script><?php
                         $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                        VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','null','登入失敗','$time')");
+                        VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','null','登入失敗','$time')");
                         header('Location: usererror.php');
                         session_unset();
                     }
@@ -35,6 +36,7 @@
                 if($_SESSION["error"]<3){
                     ?><script>alert("密碼有誤");location.href="index.php"</script><?php
                 }else{
+                    ?><script>alert("密碼有誤");</script><?php
                     $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
                     VALUES('$row[4]','$row[1]','$row[2]','$row[3]','一般使用者','$time','null','登入失敗','$time')");
                     header('Location:usererror.php');
@@ -48,6 +50,7 @@
                     if($_SESSION["error"]<3){
                         ?><script>alert("圖形驗證碼有誤");location.href="index.php"</script><?php
                     }else{
+                        ?><script>alert("圖形驗證碼有誤");</script><?php
                         $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
                         VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','null','登入失敗','$time')");
                         header('Location: usererror.php');
@@ -65,6 +68,7 @@
                 if($_SESSION["error"]<3){
                     ?><script>alert("密碼有誤");location.href="index.php"</script><?php
                 }else{
+                    ?><script>alert("密碼有誤")</script><?php
                     $login=mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
                     VALUES('$row[4]','$row[1]','$row[2]','$row[3]','管理者','$time','null','登入失敗','$time')");
                     header('Location: usererror.php');
@@ -76,6 +80,7 @@
                 ?><script>alert("帳號有誤");location.href="index.php"</script><?php
                 $_SESSION["error"]=$_SESSION["error"]+1;
             }else{
+                ?><script>alert("帳號有誤");</script><?php
                 header('Location: usererror.php');
                 session_unset();
             }

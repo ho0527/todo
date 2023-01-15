@@ -37,7 +37,7 @@ function dragLeave(e){
 
 function drop(e){
     e.preventDefault()
-    e.target.classList.remove('drag-over') 
+    e.target.classList.remove('drag-over')
     const id=e.dataTransfer.getData('text/plain')
     const draggable=document.getElementById(id)
     a.push(id)
