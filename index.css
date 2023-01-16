@@ -143,9 +143,10 @@ body{
 /*user table*/
 .title{
     border: 0.5px black solid;
-    width:240px;
+    width:200px;
     height:25px;
     font-size:30px;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -181,7 +182,7 @@ body{
 .all{
     vertical-align: top;
     border: 0.5px black solid;
-    width: 575px;
+    width: 600px;
 }
 
 .newtodo{
@@ -325,6 +326,6 @@ body{
 }
 
 .table4but{
-    width:165px;
+    width:125px;
     text-align: center;
 }

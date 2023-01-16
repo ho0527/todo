@@ -174,7 +174,7 @@
                             <option>普通</option>
                             <option>速件</option>
                             <option>最速件</option>
-                        </select><br>
+                        </select><br><br>
                         <button type="submit" class="right" name="selecter">確定(篩選器)</button>
                         <button type="button" class="newtodo" onclick="location.href='useradd.php'">新增todo</button><br><br>
                         <button type="button" id="setting-button" class="setting-button" onclick="location.href='setting.php'">setting</button>
