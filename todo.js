@@ -1,6 +1,4 @@
 let start=document.getElementById("starttime")
-let deal=document.getElementById("dealc")
-let priority=document.getElementById("priorityc")
 let uper=document.getElementById("uper")
 let lower=document.getElementById("lower")
 let user=document.getElementById("user-button")
@@ -14,8 +12,7 @@ let dateud=document.getElementById("date-up-down")
 let dealud=document.getElementById("deal-up-down")
 let priorityud=document.getElementById("priority-up-down")
 
-let buttons=[start,deal,priority]// 將所有按鈕放在陣列中，方便後續使用
-let updown=[num,title,time,dateud,dealud,priorityud]
+let updown=[num,title,time,dateud,dealud,priorityud]// 將所有按鈕放在陣列中，方便後續使用
 
 user.style.display="inline"
 setting.style.display="none"
@@ -29,28 +26,18 @@ user.onclick=function(){
     loggout.style.display="inline"
 }
 
-// 設定每個按鈕的點擊事件
-buttons.forEach(function(button){
-    button.onclick=function(){
-        if(button.value=="升冪"){
-            button.value="降冪"
-        }else{
-            button.value="升冪"
-        }
-        buttons.forEach(function(otherButton){
-            if(otherButton!=button){
-                otherButton.value="升冪"
-            }
-        })
-        if(start.value=="升冪"){
-            uper.style.display="inline"
-            lower.style.display="none"
-        }else{
-            uper.style.display="none"
-            lower.style.display="inline"
-        }
+
+start.onclick=function(){
+    if(start.value=="升冪"){
+        start.value="降冪"
+        uper.style.display="inline"
+        lower.style.display="none"
+    }else{
+        start.value="升冪"
+        uper.style.display="none"
+        lower.style.display="inline"
     }
-})
+}
 
 updown.forEach(function(buttons){
     buttons.value="升冪"

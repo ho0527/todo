@@ -323,3 +323,8 @@ body{
     border: 1px black solid;
     background-color: white;
 }
+
+.table4but{
+    width:165px;
+    text-align: center;
+}

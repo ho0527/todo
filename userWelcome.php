@@ -160,23 +160,23 @@
                 </td>
                 <td class="user-table4">
                     <form>
-                        開始時間: <input type="button" id="starttime" value="升冪" style="width:165px"><br>
-                        處理情形: <input type="button" id="dealc" value="升冪" style="width:85px">
-                        <select style="width:75px" name="deal-select">
+                        開始時間: <input type="button" id="starttime" value="升冪" class="table4but"><br>
+                        處理情形:
+                        <select class="table4but" name="deal-select">
                             <option>篩選器</option>
                             <option>未處理</option>
                             <option>處理中</option>
                             <option>已完成</option>
                         </select><br>
-                        優先情形: <input type="button" id="priorityc" value="升冪" style="width:85px">
-                        <select style="width:75px" name="priority-select">
+                        優先情形:
+                        <select class="table4but" name="priority-select">
                             <option>篩選器</option>
                             <option>普通</option>
                             <option>速件</option>
                             <option>最速件</option>
                         </select><br>
-                        <button type="submit" id="newtodo" class="right" name="selecter">確定(篩選器)</button>
-                        <button type="button" id="newtodo" class="newtodo" onclick="location.href='useradd.php'">新增todo</button><br><br>
+                        <button type="submit" class="right" name="selecter">確定(篩選器)</button>
+                        <button type="button" class="newtodo" onclick="location.href='useradd.php'">新增todo</button><br><br>
                         <button type="button" id="setting-button" class="setting-button" onclick="location.href='setting.php'">setting</button>
                         <button type="submit" id="loggout-button" class="loggout-button" name="logout">logout</button>
                         <button type="button" id="user-button" class="user-button">用戶</button>
