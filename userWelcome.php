@@ -21,7 +21,7 @@
                                 $date=$_SESSION["date"];
                                 echo("目前日期: ".$date);
                             ?><br>
-                                <input type="date" id="date" value="" name="date">
+                                <input type="date" value="<?= $date ?>" name="date">
                                 <button type="submit" name="enter" id="date-button">送出</button>
                                 <script src="todaydate.js"></script>
                         </form>
@@ -82,7 +82,7 @@
                 <td class="todo">
                     <class>TODO工作表</class>
                     <span id=uper>
-                        <table style="border-collapse:collapse;">
+                        <table>
                             <form>
                                 <tr>
                                     <td class="todo-title-time">時間</td>
@@ -120,7 +120,7 @@
                         </table>
                     </span>
                     <span id=lower>
-                        <table style="border-collapse:collapse;">
+                        <table>
                             <form>
                                 <tr>
                                     <td class="todo-title-time">時間</td>

@@ -19,7 +19,7 @@
             $hr=substr($row[4],0,2)-substr($row[3],0,2);
             $min=substr($row[4],3,5)-substr($row[3],3,5);
             ?>
-            <div class="work-box" id="up<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15); ?>px;top:<?= 145+($start_time/2)-5; ?>px;left:210px;">
+            <div class="work-box" id="up<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15); ?>px;top:<?= 145+($start_time/2)-12; ?>px;left:180px;">
                 <?php data($row); ?>
             </div>
             <?php
@@ -34,7 +34,7 @@
                 $hr=substr($row[4],0,2)-substr($row[3],0,2);
                 $min=substr($row[4],3,5)-substr($row[3],3,5);
                 ?>
-                <div class="work-box" id="down<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="height:<?= ($hr*30)+(($min/30)*15)+20; ?>px;bottom:<?= 145+(($end_time)/2)+100; ?>px;left:210px;">
+                <div class="work-box" id="down<?= $row[0]; ?>" draggable="true" value="<?= $row[0]; ?>" style="position: relative;height:<?= ($hr*30)+(($min/30)*15)+20; ?>px;bottom:<?= 145+(($end_time)/2)+100; ?>px;left:185 px;">
                     <?php data($row); ?>
                 </div>
                 <?php

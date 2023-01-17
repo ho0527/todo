@@ -50,7 +50,7 @@ let boxid=undefined
 document.querySelectorAll('.work-box').forEach(function(element){
     element.addEventListener("mousedown",function(){
         console.log("mousedown")
-        boxid=this.id
+        boxid=this.id//取得id
         down=false
         move=false
     })
@@ -62,9 +62,11 @@ document.querySelectorAll(".todo").forEach(function(element){
             return
         }
         let box=document.getElementById(boxid)
-        let y=event.pageY
-        let start=Math.floor((y-100)/50)
+        let y=event.pageY//返回事件相對於整個文檔的 Y（垂直）坐標（以像素為單位）
+        let start=Math.floor((y-145)/60)//向下取整
+        // console.log("height="+(box.style.height))
         let height=parseFloat(box.style.height.replace("px",""))/50
+        // console.log("height="+height)
         if(start<0){
             start=0
         }
@@ -97,7 +99,7 @@ document.querySelectorAll(".todo").forEach(function(element){
         xhr.open("GET","userWelcome.php?boxid="+boxid+"&start="+start+"&end="+end,true)
         xhr.onreadystatechange=function(){
             if(xhr.readyState==4&&xhr.status==200){
-                //location.reload()
+                // location.reload()
             }
         }
         xhr.send()

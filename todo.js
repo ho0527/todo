@@ -17,8 +17,6 @@ let updown=[num,title,time,dateud,dealud,priorityud]// 將所有按鈕放在陣�
 user.style.display="inline"
 setting.style.display="none"
 loggout.style.display="none"
-uper.style.display="inline"
-lower.style.display="none"
 
 user.onclick=function(){
     user.style.display="none"
@@ -26,16 +24,22 @@ user.onclick=function(){
     loggout.style.display="inline"
 }
 
-
+if(start.value=="升冪"){
+    uper.style.display="inline"
+    lower.style.display="none"
+}else{
+    uper.style.display="none"
+    lower.style.display="inline"
+}
 start.onclick=function(){
     if(start.value=="升冪"){
         start.value="降冪"
-        uper.style.display="inline"
-        lower.style.display="none"
-    }else{
-        start.value="升冪"
         uper.style.display="none"
         lower.style.display="inline"
+    }else{
+        start.value="升冪"
+        uper.style.display="inline"
+        lower.style.display="none"
     }
 }
 

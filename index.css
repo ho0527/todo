@@ -143,7 +143,7 @@ body{
 /*user table*/
 .title{
     border: 0.5px black solid;
-    width:200px;
+    width:225px;
     height:25px;
     font-size:30px;
     font-weight: bold;
@@ -152,7 +152,7 @@ body{
 
 .user-table2{
     border: 0.5px black solid;
-    width:1000px;
+    width:985px;
     text-align: center;
 }
 
@@ -170,19 +170,18 @@ body{
 }
 
 .usertable{
-    border-bottom: 0.5px black solid;
+    border: 0.5px black solid;
     background-color: gray;
     width:100px;
     height:30px;
     text-align: center;
     word-wrap: break-word;
-    border-width:0px;
 }
 
 .all{
     vertical-align: top;
     border: 0.5px black solid;
-    width: 600px;
+    width: 620px;
 }
 
 .newtodo{
@@ -193,7 +192,7 @@ body{
 .todo-title-time{
     border: 0.5px black solid;
     background-color: rgb(203, 203, 203);
-    width:175px;
+    width:155px;
     height:30px;
     text-align: center;
 }
@@ -209,7 +208,7 @@ body{
 .todo-title-main1{
     border: 0.5px black solid;
     background-color: gray;
-    width:175px;
+    width:155px;
     height:57px;
     text-align: center;
 }
@@ -225,7 +224,7 @@ body{
 .todo-title-main2{
     border: 0.5px black solid;
     background-color: rgb(203, 203, 203);
-    width:175px;
+    width:155px;
     height:57px;
     text-align: center;
 }
@@ -326,6 +325,11 @@ body{
 }
 
 .table4but{
-    width:125px;
+    width: 150px;
     text-align: center;
+}
+
+table{
+    border-collapse:collapse;
+    vertical-align:top;
 }
