@@ -147,35 +147,6 @@
                         <script src="todaydate.js"></script>
                     </form><br>
                     <?php
-                    if(isset($_GET["finish-but"])){
-                        $id=$_GET['id'];
-                        $title=$_GET['title'];
-                        $date=$_GET["date"];
-                        $starthr=$_GET["start-hr"];
-                        $startmin=$_GET["start-min"];
-                        $endhr=$_GET["end-hr"];
-                        $endmin=$_GET["end-min"];
-                        $deal=$_GET["deal"];
-                        $priority=$_GET["priority"];
-                        $detail=$_GET["detaile"];
-                        $start=($starthr.":".$startmin);
-                        $end=($endhr.":".$endmin);
-                        $todo=mysqli_query($db,"SELECT*FROM `todo` WHERE `title`='$title'");
-                        $row=mysqli_fetch_row($todo);
-                        if($starthr=="hr"||$startmin=="min"||$endhr=="hr"||$endmin=="min"||$title==""){
-                            ?><script>alert("請填寫時間/標題");location.href="useradd.php"</script><?php
-                        }elseif($start>=$end){
-                            ?><script>alert("時間填寫錯誤");location.href="useradd.php"</script><?php
-                        }else{
-                            if($row&&$row[0]!=$_SESSION["todoval"]){
-                                ?><script>alert("工作表已存在");location.href="useradd.php"</script><?php
-                            }else{
-                                mysqli_query($db,"UPDATE `todo` SET `title`='$title', `date`='$date', `start_time`='$start',`end_time`='$end', `deal`='$deal', `priority`='$priority', `detail`='$detail' WHERE `id`='$id'");
-                                ?><script>location.href="userWelcome.php"</script><?php
-                                unset($id);
-                            }
-                        }
-                    }
                 }else{
                     ?>
                     <form>
@@ -232,24 +203,34 @@
                         <script src="todaydate.js"></script>
                     </form><br><br>
                     <?php
-                    if(isset($_GET["finish-but"])){
-                        $title=$_GET['title'];
-                        $date=$_GET["date"];
-                        $starthr=$_GET["start-hr"];
-                        $startmin=$_GET["start-min"];
-                        $endhr=$_GET["end-hr"];
-                        $endmin=$_GET["end-min"];
-                        $deal=$_GET["deal"];
-                        $priority=$_GET["priority"];
-                        $detail=$_GET["detaile"];
-                        $start=($starthr.":".$startmin);
-                        $end=($endhr.":".$endmin);
-                        $todo=mysqli_query($db,"SELECT*FROM `todo` WHERE `title`='$title'");
-                        $row=mysqli_fetch_row($todo);
-                        if($starthr=="hr"||$startmin=="min"||$endhr=="hr"||$endmin=="min"||$title==""){
-                            ?><script>alert("請填寫時間/標題");location.href="useradd.php"</script><?php
-                        }elseif($start>=$end){
-                            ?><script>alert("時間填寫錯誤");location.href="useradd.php"</script><?php
+                }
+                if(isset($_GET["finish-but"])){
+                    $title=$_GET['title'];
+                    $date=$_GET["date"];
+                    $starthr=$_GET["start-hr"];
+                    $startmin=$_GET["start-min"];
+                    $endhr=$_GET["end-hr"];
+                    $endmin=$_GET["end-min"];
+                    $deal=$_GET["deal"];
+                    $priority=$_GET["priority"];
+                    $detail=$_GET["detaile"];
+                    $start=($starthr.":".$startmin);
+                    $end=($endhr.":".$endmin);
+                    $todo=mysqli_query($db,"SELECT*FROM `todo` WHERE `title`='$title'");
+                    $row=mysqli_fetch_row($todo);
+                    if($starthr=="hr"||$startmin=="min"||$endhr=="hr"||$endmin=="min"||$title==""){
+                        ?><script>alert("請填寫時間/標題");location.href="useradd.php"</script><?php
+                    }elseif($start>=$end){
+                        ?><script>alert("時間填寫錯誤");location.href="useradd.php"</script><?php
+                    }else{
+                        if(isset($_GET["id"])){
+                            if($row&&$row[0]!=$_SESSION["todoval"]){
+                                ?><script>alert("工作表已存在");location.href="useradd.php"</script><?php
+                            }else{
+                                mysqli_query($db,"UPDATE `todo` SET `title`='$title', `date`='$date', `start_time`='$start',`end_time`='$end', `deal`='$deal', `priority`='$priority', `detail`='$detail' WHERE `id`='$id'");
+                                ?><script>location.href="userWelcome.php"</script><?php
+                                unset($id);
+                            }
                         }else{
                             if($row){
                                 ?><script>alert("工作表已存在");location.href="useradd.php"</script><?php
