@@ -1,25 +1,26 @@
-let todoeditblock=document.getElementsByTagName("div")
+let workbox=document.getElementsByClassName("work-box")
 let button=document.getElementsByClassName("todobut")
+//訂定變數
 
 for(let i=0;i<button.length;i=i+1){
-    button[i].disabled=true
+    button[i].disabled=true//讓每個button都是disabled
 }
 
-for(let i=0;i<todoeditblock.length;i=i+1){
-    todoeditblock[i].addEventListener('click',function(){
-        let buttons=this.querySelectorAll(".todobut")
+for(let i=0;i<workbox.length;i=i+1){//做總workbox數
+    workbox[i].addEventListener('click',function(){
+        let buttons=this.querySelectorAll(".todobut")//選擇該todobut
         for(let i=0;i<button.length;i=i+1){
-            button[i].disabled=true
+            button[i].disabled=true//將其他todobut disabled
         }
         for(let i=0;i<buttons.length;i=i+1){
-            buttons[i].disabled=false
+            buttons[i].disabled=false//將該todobut disabled false
             setTimeout(function(){
                 for(let j=0;j<button.length;j=j+1){
-                    button[j].disabled=true
+                    button[j].disabled=true //等待5秒設為true
                 }
             },5000)
         }
-        console.log(todoeditblock[i]);
+        console.log(workbox[i]);
     })
 }
 

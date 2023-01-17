@@ -1,6 +1,5 @@
 let today=new Date()
 let date=document.getElementById("date")
-let date2=document.getElementById("date2")
 let day
 let month
 
@@ -19,4 +18,3 @@ if(today.getMonth()+1<10){
 let todaydate=(today.getFullYear()+"-"+month+"-"+day)
 
 date.value=todaydate
-date2.value=todaydate
