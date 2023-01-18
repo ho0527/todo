@@ -1,6 +1,3 @@
-let start=document.getElementById("starttime")
-let uper=document.getElementById("uper")
-let lower=document.getElementById("lower")
 let user=document.getElementById("user-button")
 let setting=document.getElementById("setting-button")
 let loggout=document.getElementById("loggout-button")
@@ -22,25 +19,6 @@ user.onclick=function(){
     user.style.display="none"
     setting.style.display="inline"
     loggout.style.display="inline"
-}
-
-if(start.value=="升冪"){
-    uper.style.display="inline"
-    lower.style.display="none"
-}else{
-    uper.style.display="none"
-    lower.style.display="inline"
-}
-start.onclick=function(){
-    if(start.value=="升冪"){
-        start.value="降冪"
-        uper.style.display="none"
-        lower.style.display="inline"
-    }else{
-        start.value="升冪"
-        uper.style.display="inline"
-        lower.style.display="none"
-    }
 }
 
 updown.forEach(function(buttons){

@@ -4,13 +4,14 @@
         <meta charset="UTF-8">
         <title>一般會員專區</title>
         <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-        <link href="index.css" rel="Stylesheet">
+        <link href="index.css" rel="stylesheet">
     </head>
     <body>
         <?php
             include("link.php");
             include("userdef.php");
             unset($_SESSION["todoval"]);
+            $start=$_SESSION["starttime"];
         ?>
         <table class="main-table">
             <tr>
@@ -23,7 +24,6 @@
                             ?><br>
                                 <input type="date" value="<?= $date ?>" name="date">
                                 <button type="submit" name="enter" id="date-button">送出</button>
-                                <script src="todaydate.js"></script>
                         </form>
                         <?php
                             if(isset($_GET["enter"])){
@@ -81,86 +81,42 @@
             <tr>
                 <td class="todo">
                     <class>TODO工作表</class>
-                    <span id=uper>
-                        <table>
-                            <form>
-                                <tr>
-                                    <td class="todo-title-time">時間</td>
-                                    <td class="todo-title-work">工作計畫</td>
-                                </tr>
-                                <?php
-                                    $m=0;
-                                    for($i=0;$i<=22;$i=$i+2){
-                                        ?>
-                                        <tr>
-                                            <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i,2,"0",STR_PAD_LEFT)."~".str_pad($i+2,2,"0",STR_PAD_LEFT)); ?></td>
-                                            <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1 ?>"></td>
-                                        </tr>
-                                        <?php
-                                        $m=$m+1;
-                                    }
-                                    if(isset($_SESSION["priority"])||isset($_SESSION["deal"])){
-                                        @$priority=$_SESSION["priority"];
-                                        @$deal=$_SESSION["deal"];
-                                        $todo_conditions="`date`='$date'";
-                                        if($deal=="未處理"||$deal=="處理中"||$deal=="已完成"){
-                                            $todo_conditions=$todo_conditions." AND `deal`='$deal'";
-                                        }
-                                        if($priority=="普通"||$priority=="速件"||$priority=="最速件"){
-                                            $todo_conditions=$todo_conditions." AND `priority`='$priority'";
-                                        }
-                                        $todo=mysqli_query($db, "SELECT*FROM `todo` WHERE $todo_conditions");
-                                        uper($todo);
-                                    }else{
-                                        $todo=mysqli_query($db, "SELECT*FROM `todo` WHERE `date`='$date'");
-                                        uper($todo);
-                                    }
-                                ?>
-                            </form>
-                        </table>
-                    </span>
-                    <span id=lower>
-                        <table>
-                            <form>
-                                <tr>
-                                    <td class="todo-title-time">時間</td>
-                                    <td class="todo-title-work">工作計畫</td>
-                                </tr>
-                                <?php
-                                    $m=0;
-                                    for($i=22;$i>=0;$i=$i-2){
-                                        ?>
-                                        <tr>
-                                            <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT)); ?></td>
-                                            <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1; ?>"></td>
-                                        </tr>
-                                        <?php
-                                        $m=$m+1;
-                                    }
-                                    if(isset($_SESSION["priority"])||isset($_SESSION["deal"])){
-                                        @$priority=$_SESSION["priority"];
-                                        @$deal=$_SESSION["deal"];
-                                        $todo_conditions="`date`='$date'";
-                                        if($deal=="未處理"||$deal=="處理中"||$deal=="已完成"){
-                                            $todo_conditions=$todo_conditions." AND `deal`='$deal'";
-                                        }
-                                        if($priority=="普通"||$priority=="速件"||$priority=="最速件"){
-                                            $todo_conditions=$todo_conditions." AND `priority`='$priority'";
-                                        }
-                                        $todo=mysqli_query($db, "SELECT*FROM `todo` WHERE $todo_conditions");
-                                        lower($todo);
-                                    }else{
-                                        $todo=mysqli_query($db, "SELECT*FROM `todo` WHERE `date`='$date'");
-                                        lower($todo);
-                                    }
-                                ?>
-                            </form>
-                        </table>
-                    </span>
+                    <table>
+                        <tr>
+                            <td class="todo-title-time">時間</td>
+                            <td class="todo-title-work">工作計畫</td>
+                        </tr>
+                        <?php
+                            $m=0;
+                            if($start=="升冪"){
+                                for($i=0;$i<=22;$i=$i+2){
+                                    ?>
+                                    <tr>
+                                        <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i,2,"0",STR_PAD_LEFT)."~".str_pad($i+2,2,"0",STR_PAD_LEFT)); ?></td>
+                                        <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1 ?>"></td>
+                                    </tr>
+                                    <?php
+                                    $m=$m+1;
+                                }
+                            }else{
+                                for($i=22;$i>=0;$i=$i-2){
+                                    ?>
+                                    <tr>
+                                        <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT)); ?></td>
+                                        <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1; ?>"></td>
+                                    </tr>
+                                    <?php
+                                    $m=$m+1;
+                                }
+                            }
+                        ?>
+                    </table>
                 </td>
                 <td class="user-table4">
                     <form>
-                        開始時間: <input type="button" id="starttime" value="升冪" class="table4but"><br>
+                        開始時間: <input type="submit" name="starttime" value="<?= $start ?>" class="table4but"><br>
+                    </form>
+                    <form>
                         處理情形:
                         <select class="table4but" name="deal-select">
                             <option>篩選器</option>
@@ -182,24 +138,50 @@
                         <button type="button" id="user-button" class="user-button">用戶</button>
                         <button type="button" class="right" onclick="submitbut()">確定(升降冪)</button>
                     </form>
-                    <?php
-                        if(isset($_GET["preview"])){
-                            $id=$_GET["preview"];
-                            @$row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `todo` WHERE `id`='$id'"));
-                            ?>
-                            <div class="div">
-                                標題: <?= @$row[1]; ?><br>
-                                詳細內容: <?= @$row[7]; ?>
-                                <button onclick="location.href='userWelcome.php'" id="button4">關閉</button>
-                            </div>
-                            <?php
-                        }
-                    ?>
-                </td>
-            </tr>
-        </table>
-        <form>
+                    <form>
+                        <?php
+                            if(isset($_GET["preview"])){
+                                $id=$_GET["preview"];
+                                @$row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `todo` WHERE `id`='$id'"));
+                                ?>
+                                <div class="div">
+                                    標題: <?= @$row[1]; ?><br>
+                                    詳細內容: <?= @$row[7]; ?>
+                                    <button onclick="location.href='userWelcome.php'" id="button4">關閉</button>
+                                </div>
+                                <?php
+                            }
+                        ?>
+                    </form>
+                    </td>
+                </tr>
+            </table>
+            <form>
             <?php
+                if(isset($_SESSION["priority"])||isset($_SESSION["deal"])){
+                    @$priority=$_SESSION["priority"];
+                    @$deal=$_SESSION["deal"];
+                    $todo_conditions="`date`='$date'";
+                    if($deal!="篩選器"){
+                        $todo_conditions=$todo_conditions." AND `deal`='$deal'";
+                    }
+                    if($priority!="篩選器"){
+                        $todo_conditions=$todo_conditions." AND `priority`='$priority'";
+                    }
+                    $todo=mysqli_query($db,"SELECT*FROM `todo` WHERE $todo_conditions");
+                    if($start=="升冪"){
+                        uper($todo);
+                    }else{
+                        lower($todo);
+                    }
+                }else{
+                    $todo=mysqli_query($db, "SELECT*FROM `todo` WHERE `date`='$date'");
+                    if($start=="升冪"){
+                        uper($todo);
+                    }else{
+                        lower($todo);
+                    }
+                }
                 @$user_data=$_SESSION["data"];
                 if(isset($_GET["logout"])){
                     $user=mysqli_query($db,"SELECT*FROM `user` WHERE `userNumber`='$user_data'");
@@ -225,6 +207,14 @@
                 if(isset($_GET["selecter"])){
                     $_SESSION["priority"]=$_GET["priority-select"];
                     $_SESSION["deal"]=$_GET["deal-select"];
+                    ?><script>location.href="userWelcome.php"</script><?php
+                }
+                if(isset($_GET["starttime"])){
+                    if($_GET["starttime"]=="升冪"){
+                        $_SESSION["starttime"]="降冪";
+                    }else{
+                        $_SESSION["starttime"]="升冪";
+                    }
                     ?><script>location.href="userWelcome.php"</script><?php
                 }
             ?>
