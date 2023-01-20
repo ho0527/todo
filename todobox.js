@@ -24,27 +24,27 @@ for(let i=0;i<workbox.length;i=i+1){//做總workbox數
     })
 }
 
-let down=false
-let move=false
-document.querySelectorAll(".todo").forEach(function(element){
-    element.addEventListener("mousedown",function(){
-        down=true
-    })
-})
-document.querySelectorAll(".todo").forEach(function(element){
-    element.addEventListener("mousemove",function(event){
-        if(down==true){
-            move=true
-        }
-    })
-})
-document.querySelectorAll(".todo").forEach(function(element){
-    element.addEventListener("mouseup",function(){
-        if(move==true){
-            location.href="useradd.php"
-        }
-    })
-})
+// let down=false
+// let move=false
+// document.querySelectorAll(".todo").forEach(function(element){
+//     element.addEventListener("mousedown",function(){
+//         down=true
+//     })
+// })
+// document.querySelectorAll(".todo").forEach(function(element){
+//     element.addEventListener("mousemove",function(event){
+//         if(down==true){
+//             move=true
+//         }
+//     })
+// })
+// document.querySelectorAll(".todo").forEach(function(element){
+//     element.addEventListener("mouseup",function(){
+//         if(move==true){
+//             location.href="useradd.php"
+//         }
+//     })
+// })
 
 // let boxid=undefined
 // document.querySelectorAll('.work-box').forEach(function(element){
