@@ -27,16 +27,15 @@
                   <table class="main-table">
                      <form>
                         <tr>
-                           <td class="admin-table-num">編號<input type="button" id="num-up-down"></td>
-                           <td class="admin-table">使用者帳號<input type="button" id="user-up-down"></td>
-                           <td class="admin-table">密碼<input type="button" id="code-up-down"></td>
-                           <td class="admin-table">名稱<input type="button" id="name-up-down"></td>
+                           <td class="admin-table-num">編號<input type="submit" name="num-up-down" id="num-up-down" value="升冪"></td>
+                           <td class="admin-table">使用者帳號<input type="submit" name="user-up-down" id="user-up-down" value="升冪"></td>
+                           <td class="admin-table">密碼<input type="submit" name="code-up-down" id="code-up-down" value="升冪"></td>
+                           <td class="admin-table">名稱<input type="submit" name="name-up-down" id="name-up-down" value="升冪"></td>
                            <td class="admin-table">權限</td>
                            <td class="admin-table">登入時間</td>
                            <td class="admin-table">登出時間</td>
                            <td class="admin-table">動作</td>
                            <td class="admin-table">動作時間</td>
-                           <button type="button" onclick="submitbut()">確定(升降冪)</button>
                         </tr>
                         <?php
                            include("link.php");
@@ -99,6 +98,5 @@
                </td>
             </tr>
          </table>
-         <script src="admin.js"></script>
     </body>
 </html>

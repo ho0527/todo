@@ -12,6 +12,12 @@
             include("userdef.php");
             unset($_SESSION["todoval"]);
             $start=$_SESSION["starttime"];
+            // @$numberud=$_SESSION["numud"];
+            // @$titleud=$_SESSION["titleud"];
+            // @$timeud=$_SESSION["timeud"];
+            // @$dateud=$_SESSION["dateud"];
+            // @$dealud=$_SESSION["dealud"];
+            // @$priorityud=$_SESSION["priorityud"];
         ?>
         <table class="main-table">
             <tr>
@@ -38,40 +44,48 @@
                     <table>
                         <form>
                             <tr>
-                                <td class="usertable">編號<input type="button" id="num-up-down"></td>
-                                <td class="usertable">標題<input type="button" id="title-up-down"></td>
-                                <td class="usertable">日期<input type="button" id="time-up-down"></td>
-                                <td class="usertable">時間<input type="button" id="date-up-down"></td>
-                                <td class="usertable">處理情形<input type="button" id="deal-up-down"></td>
-                                <td class="usertable">優先順序<input type="button" id="priority-up-down"></td>
+                                <td class="usertable">編號<input type="submit" name="num-up-down" id="num-up-down" value="升冪"></td>
+                                <td class="usertable">標題<input type="submit" name="title-up-down" id="title-up-down" value="升冪"></td>
+                                <td class="usertable">日期<input type="submit" name="date-up-down" id="date-up-down" value="升冪"></td>
+                                <td class="usertable">時間<input type="submit" name="time-up-down" id="time-up-down" value="升冪"></td>
+                                <td class="usertable">處理情形<input type="submit" name="deal-up-down" id="deal-up-down" value="升冪"></td>
+                                <td class="usertable">優先順序<input type="submit" name="priority-up-down" id="priority-up-down" value="升冪"></td>
                                 <td class="usertable">詳細內容</td>
                             </tr>
                             <?php
                                 $data=mysqli_query($db,"SELECT*FROM `todo`");
-                                if(isset($_GET["up_down"])){
-                                    $numberud=$_GET["num-up-down"];
-                                    $titleud=$_GET["title-up-down"];
-                                    $timeud=$_GET["time-up-down"];
-                                    $dateud=$_GET["date-up-down"];
-                                    $dealud=$_GET["deal-up-down"];
-                                    $priorityud=$_GET["priority-up-down"];
-                                    if($numberud=="降冪"){
-                                        down($data,"id");
-                                    }elseif($titleud=="降冪"){
-                                        down($data,"title");
-                                    }elseif($timeud=="降冪"){
-                                        down($data,"date");
-                                    }elseif($dateud=="降冪"){
-                                        down($data,"start_time");
-                                    }elseif($dealud=="降冪"){
-                                        down($data,"deal");
-                                    }elseif($priorityud=="降冪"){
-                                        down($data,"priority");
-                                    }else{
-                                        header("location:userWelcome.php");
-                                    }
+                                @$numberud=$_GET["num-up-down"];
+                                @$titleud=$_GET["title-up-down"];
+                                @$timeud=$_GET["time-up-down"];
+                                @$dateud=$_GET["date-up-down"];
+                                @$dealud=$_GET["deal-up-down"];
+                                @$priorityud=$_GET["priority-up-down"];
+                                if($numberud=="升冪"){
+                                    down($data,"id");
+                                    ?><script>document.getElementById("num-up-down").value="降冪";</script><?php
+                                }elseif($titleud=="升冪"){
+                                    down($data,"title");
+                                    ?><script>document.getElementById("title-up-down").value="降冪";</script><?php
+                                }elseif($timeud=="升冪"){
+                                    down($data,"date");
+                                    ?><script>document.getElementById("time-up-down").value="降冪";</script><?php
+                                }elseif($dateud=="升冪"){
+                                    down($data,"start_time");
+                                    ?><script>document.getElementById("date-up-down").value="降冪";</script><?php
+                                }elseif($dealud=="升冪"){
+                                    down($data,"deal");
+                                    ?><script>document.getElementById("deal-up-down").value="降冪";</script><?php
+                                }elseif($priorityud=="升冪"){
+                                    down($data,"priority");
+                                    ?><script>document.getElementById("priorityud-up-down").value="降冪";</script><?php
                                 }else{
                                     up($data,"id");
+                                    ?><script>document.getElementById("num-up-down").value="升冪"
+                                    document.getElementById("title-up-down").value="升冪"
+                                    document.getElementById("time-up-down").value="升冪"
+                                    document.getElementById("date-up-down").value="升冪"
+                                    document.getElementById("deal-up-down").value="升冪"
+                                    document.getElementById("priorityud-up-down").value="升冪"</script><?php
                                 }
                             ?>
                         </form>
@@ -219,7 +233,6 @@
                 }
             ?>
         </form>
-        <script src="todo.js"></script>
         <script src="todobox.js"></script>
     </body>
 </html>

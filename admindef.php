@@ -76,24 +76,28 @@
     }
 
     function issetgetupdown($data){
-        if(isset($_GET["up_down"])){
-            $number=$_GET["num-up-down"];
-            @$user=$_GET["user-up-down"];
-            @$code=$_GET["code-up-down"];
-            @$name=$_GET["name-up-down"];
-            if($number=="降冪"){
-                down($data,"usernumber");
-            }elseif($user=="降冪"){
-                down($data,"username");
-            }elseif($code=="降冪"){
-                down($data,"password");
-            }elseif($name=="降冪"){
-                down($data,"name");
-            }else{
-                up($data,"usernumber");
-            }
+        @$number=$_GET["num-up-down"];
+        @$user=$_GET["user-up-down"];
+        @$code=$_GET["code-up-down"];
+        @$name=$_GET["name-up-down"];
+        if($number=="升冪"){
+            down($data,"usernumber");
+            ?><script>document.getElementById("num-up-down").value="降冪"</script><?php
+        }elseif($user=="升冪"){
+            down($data,"username");
+            ?><script>document.getElementById("user-up-down").value="降冪"</script><?php
+        }elseif($code=="升冪"){
+            down($data,"password");
+            ?><script>document.getElementById("code-up-down").value="降冪"</script><?php
+        }elseif($name=="升冪"){
+            down($data,"name");
+            ?><script>document.getElementById("name-up-down").value="降冪"</script><?php
         }else{
             up($data,"usernumber");
+            ?><script>document.getElementById("num-up-down").value="升冪"
+            document.getElementById("user-up-down").value="升冪"
+            document.getElementById("code-up-down").value="升冪"
+            document.getElementById("name-up-down").value="升冪"</script><?php
         }
     }
 ?>

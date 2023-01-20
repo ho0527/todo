@@ -31,6 +31,12 @@
                     $_SESSION["data"]=$row[4];
                     $_SESSION["date"]=date("Y-m-d");
                     $_SESSION["starttime"]="升冪";
+                    $_SESSION["numud"]="升冪";
+                    $_SESSION["titleud"]="升冪";
+                    $_SESSION["timeud"]="升冪";
+                    $_SESSION["dateud"]="升冪";
+                    $_SESSION["dealud"]="升冪";
+                    $_SESSION["priorityud"]="升冪";
                 }
             }else{
                 $_SESSION["error"]=$_SESSION["error"]+1;
