@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>一般會員專區</title>
-        <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link href="index.css" rel="stylesheet">
     </head>
     <body>
