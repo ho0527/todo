@@ -1,44 +1,47 @@
-const drags=document.querySelectorAll('.dragimg')
-const drops=document.querySelectorAll('#dropbox')
+const drags=document.querySelectorAll(".dragimg")
+const drops=document.querySelectorAll("#dropbox")
 let a=[]
 let b=["", "", ""]
 let temp
 
 drags.forEach(function(dragbox){
-    dragbox.addEventListener('dragstart', dragStart)
+    dragbox.addEventListener("dragstart", dragStart)
 })
 
 drops.forEach(function(dropbox){
-    dropbox.addEventListener('dragenter',dragEnter)
-    dropbox.addEventListener('dragover',dragOver)
-    dropbox.addEventListener('dragleave',dragLeave)
-    dropbox.addEventListener('drop',drop)
+    dropbox.addEventListener("dragenter",dragEnter)
+    dropbox.addEventListener("dragover",dragOver)
+    dropbox.addEventListener("dragleave",dragLeave)
+    dropbox.addEventListener("drop",drop)
 })
 
 function dragStart(e){
-    e.dataTransfer.setData('text/plain',e.target.id)
+    e.dataTransfer.setData("text/plain",e.target.id)
     console.log(e.target.id)
 }
 
 function dragEnter(e){
     e.preventDefault()
-    e.target.classList.add('drag-over')
+    e.target.classList.add("drag-over")
+    e.target.style.cursor="grabbing"
 }
 
 function dragOver(e){
     e.preventDefault()
-    e.target.classList.add('drag-over')
+    e.target.classList.add("drag-over")
+    e.target.style.cursor="grabbing"
 }
 
 function dragLeave(e){
     e.preventDefault()
-    e.target.classList.remove('drag-over')
+    e.target.classList.remove("drag-over")
+    e.target.style.cursor="not-allowed"
 }
 
 function drop(e){
     e.preventDefault()
-    e.target.classList.remove('drag-over')
-    const id=e.dataTransfer.getData('text/plain')
+    e.target.classList.remove("drag-over")
+    const id=e.dataTransfer.getData("text/plain")
     const draggable=document.getElementById(id)
     a.push(id)
     console.log(id)

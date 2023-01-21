@@ -76,6 +76,10 @@ body{
     background-color: white;
 }
 
+.dragimg{
+    cursor: grab;
+}
+
 .block2{
     border: 1px black solid;
     height: 40px;

@@ -77,15 +77,11 @@
                                     ?><script>document.getElementById("deal-up-down").value="降冪";</script><?php
                                 }elseif($priorityud=="升冪"){
                                     down($data,"priority");
-                                    ?><script>document.getElementById("priorityud-up-down").value="降冪";</script><?php
+                                    ?><script>document.getElementById("priority-up-down").value="降冪";</script><?php
+                                }elseif(isset($numberud)||isset($titleud)||isset($timeud)||isset($dateud)||isset($dealud)||isset($priorityud)){
+                                    header("location:userWelcome.php");
                                 }else{
                                     up($data,"id");
-                                    ?><script>document.getElementById("num-up-down").value="升冪"
-                                    document.getElementById("title-up-down").value="升冪"
-                                    document.getElementById("time-up-down").value="升冪"
-                                    document.getElementById("date-up-down").value="升冪"
-                                    document.getElementById("deal-up-down").value="升冪"
-                                    document.getElementById("priorityud-up-down").value="升冪"</script><?php
                                 }
                             ?>
                         </form>
@@ -150,7 +146,6 @@
                         <button type="button" id="setting-button" class="setting-button" onclick="location.href='setting.php'">setting</button>
                         <button type="submit" id="loggout-button" class="loggout-button" name="logout">logout</button>
                         <button type="button" id="user-button" class="user-button">用戶</button>
-                        <button type="button" class="right" onclick="submitbut()">確定(升降冪)</button>
                     </form>
                     <form>
                         <?php
