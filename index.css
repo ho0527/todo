@@ -338,7 +338,7 @@ table{
     vertical-align:top;
 }
 
-.usertablediv{
+.upusertablediv{
     width: 100%;
     height: 12px;
     position: relative;
@@ -347,4 +347,11 @@ table{
 
 .userhalf{
     border-top: 1px black solid;
+}
+
+.downusertablediv{
+    width: 100%;
+    height: 12px;
+    position: relative;
+    top: 10px;
 }

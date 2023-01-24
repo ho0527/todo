@@ -114,10 +114,10 @@
                                         <form>
                                             <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT)); ?></td>
                                             <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1; ?>">
-                                                <div id="<?= $i ?>down" class="usertablediv downusertablediv"></div>
-                                                <div id="<?= $i+0.5 ?>down" class="usertablediv downusertablediv"></div>
-                                                <div id="<?= $i+1 ?>down" class="userhalf usertablediv downusertablediv"></div>
                                                 <div id="<?= $i+1.5 ?>down" class="usertablediv downusertablediv"></div>
+                                                <div id="<?= $i+1 ?>down" class="userhalf usertablediv downusertablediv"></div>
+                                                <div id="<?= $i+0.5 ?>down" class="usertablediv downusertablediv"></div>
+                                                <div id="<?= $i ?>down" class="usertablediv downusertablediv"></div>
                                             </td>
                                         </form>
                                     </tr>
@@ -130,7 +130,7 @@
                 </td>
                 <td class="user-table4">
                     <form>
-                        開始時間: <input type="submit" name="starttime" value="<?= $start ?>" class="table4but"><br>
+                        開始時間: <input type="submit" name="starttime" value="<?= $start ?>" class="table4but" id="updownbut"><br>
                     </form>
                     <form>
                         處理情形:
