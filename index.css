@@ -250,6 +250,7 @@ body{
     width: 150px;
     font-size: 12px;
     position:absolute;
+    /* user-select: all; */
 }
 
 #button3{
@@ -259,7 +260,7 @@ body{
     top:0px;
     right:1px;
     font-size: 1px;
-
+    cursor: pointer;
 }
 
 #button4{
@@ -269,7 +270,7 @@ body{
     bottom:0px;
     right:1px;
     font-size: 1px;
-
+    cursor: pointer;
 }
 
 .date-time{
@@ -335,4 +336,15 @@ body{
 table{
     border-collapse:collapse;
     vertical-align:top;
+}
+
+.usertablediv{
+    width: 100%;
+    height: 12px;
+    position: relative;
+    bottom: 2px;
+}
+
+.userhalf{
+    border-top: 1px black solid;
 }

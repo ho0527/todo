@@ -12,12 +12,6 @@
             include("userdef.php");
             unset($_SESSION["todoval"]);
             $start=$_SESSION["starttime"];
-            // @$numberud=$_SESSION["numud"];
-            // @$titleud=$_SESSION["titleud"];
-            // @$timeud=$_SESSION["timeud"];
-            // @$dateud=$_SESSION["dateud"];
-            // @$dealud=$_SESSION["dealud"];
-            // @$priorityud=$_SESSION["priorityud"];
         ?>
         <table class="main-table">
             <tr>
@@ -103,7 +97,12 @@
                                     ?>
                                     <tr>
                                         <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i,2,"0",STR_PAD_LEFT)."~".str_pad($i+2,2,"0",STR_PAD_LEFT)); ?></td>
-                                        <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1 ?>"></td>
+                                        <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1 ?>">
+                                            <div id="<?= $i ?>up" class="usertablediv upusertablediv"></div>
+                                            <div id="<?= $i+0.5 ?>up" class="usertablediv upusertablediv"></div>
+                                            <div id="<?= $i+1 ?>up" class="userhalf usertablediv upusertablediv"></div>
+                                            <div id="<?= $i+1.5 ?>up" class="usertablediv upusertablediv"></div>
+                                        </td>
                                     </tr>
                                     <?php
                                     $m=$m+1;
@@ -112,8 +111,15 @@
                                 for($i=22;$i>=0;$i=$i-2){
                                     ?>
                                     <tr>
-                                        <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT)); ?></td>
-                                        <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1; ?>"></td>
+                                        <form>
+                                            <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT)); ?></td>
+                                            <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1; ?>">
+                                                <div id="<?= $i ?>down" class="usertablediv downusertablediv"></div>
+                                                <div id="<?= $i+0.5 ?>down" class="usertablediv downusertablediv"></div>
+                                                <div id="<?= $i+1 ?>down" class="userhalf usertablediv downusertablediv"></div>
+                                                <div id="<?= $i+1.5 ?>down" class="usertablediv downusertablediv"></div>
+                                            </td>
+                                        </form>
                                     </tr>
                                     <?php
                                     $m=$m+1;

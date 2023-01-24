@@ -2,7 +2,6 @@ let user=document.getElementById("user-button")
 let setting=document.getElementById("setting-button")
 let loggout=document.getElementById("loggout-button")
 
-
 let workbox=document.getElementsByClassName("work-box")
 let button=document.getElementsByClassName("todobut")
 //訂定變數
@@ -61,103 +60,100 @@ document.querySelectorAll(".todo").forEach(function(element){
     })
 })
 
-// let boxid=undefined
-// document.querySelectorAll('.work-box').forEach(function(element){
-//     element.addEventListener("mousedown",function(){
-//         console.log("mousedown")
-//         boxid=this.id//取得id
-//         down=false
-//         move=false
-//     })
-// })
-// document.querySelectorAll(".todo").forEach(function(element){
-//     element.addEventListener("mousemove",function(event){
-//         console.log("mousemove")
-//         if(boxid==undefined){
-//             return
-//         }
-//         let box=document.getElementById(boxid)
-//         let y=event.pageY//返回事件相對於整個文檔的 Y（垂直）坐標（以像素為單位）
-//         let start=Math.floor((y-145)/60)//向下取整
-//         // console.log("height="+(box.style.height))
-//         let height=parseFloat(box.style.height.replace("px",""))/50
-//         // console.log("height="+height)
-//         if(start<0){
-//             start=0
-//         }
-//         if(start+height>48){
-//             start=48-height
-//         }
-//         let end=start+height
-//         let top=start*50+110
-//         box.style.top=top
-//         if(start%2==0){
-//             start=String(start/2).padStart(2,"0")+":00"
-//         }else{
-//             start=String(start/2- 0.5).padStart(2,"0")+":30"
-//         }
-//         if(end%2==0){
-//             end=String(end/2).padStart(2,"0")+":00"
-//         }else{
-//             end=String(end/2- 0.5).padStart(2,"0")+":30"
-//         }
-//     })
-// })
-// document.querySelectorAll(".todo").forEach(function(element){
-//     element.addEventListener("mouseup",function(){
-//         console.log("up")
-//         let box=document.getElementById(boxid)
-//         let height=parseFloat(box.style.height.replace("px",""))/50
-//         let start=parseFloat(box.style.top.replace("px","")-110)/50
-//         let end=start+height
-//         let xhr=new XMLHttpRequest()
-//         xhr.open("GET","userWelcome.php?boxid="+boxid+"&start="+start+"&end="+end,true)
-//         xhr.onreadystatechange=function(){
-//             if(xhr.readyState==4&&xhr.status==200){
-//                 // location.reload()
-//             }
-//         }
-//         xhr.send()
-//     })
-// })
-
-let boxid=undefined
-$('.work-box').on("mousedown",function(){
-    console.log("down")
-    boxid=this.id
-})
-$("body").on("mousemove",function(event){
-    console.log("mousemove")
-    if(boxid==undefined){
-        return
-    }
-    let box=document.getElementById(boxid)
-    let y=event.pageY
-    let start=Math.floor((y-100)/50)
-    let height=box.css("height").replace("px","")/50
-    if(start<0){
-        start=0
-    }
-    if(start+height>48){
-        start=48-height
-    }
-    let end=start+height
-    let top=start*50+110
-    box.css("top",top)
-    start=(start%2==0)?String(start/2).padStart(2,"0")+":00":String(start/2-0.5).padStart(2,"0")+":30"
-    end=(end%2==0)?String(end/2).padStart(2,"0")+":00":String(end/2-0.5).padStart(2,"0")+":30"
-})
-$("body").on("mouseup",function(event){
-    console.log("up")
-    let box=document.getElementById(boxid)
-    let height=box.css("height").replace("px","")/50
-    let start=(box.css("height").replace("px","")-110)/50
-    let end=start+height
-    $.ajax({
-        url:"userWelcome.php?boxid="+boxid+"&start="+start+"&end="+end,
-        type:"get",
-        success: function(){
-            //location.reload()
-        }
+let boxid
+var box
+document.querySelectorAll('.work-box').forEach(function(element){
+    element.addEventListener("mousedown",function(){
+        console.log("mousedown")
+        boxid=this.id//取得id
+        console.log(boxid)
+        down=false
+        move=false
+        box=document.querySelectorAll("#"+boxid)
+        box.forEach(function(box){
+            box.addEventListener("dragstart",dragstart)
+        });
     })
 })
+
+let upusertablediv=document.querySelectorAll(".upusertablediv")
+
+upusertablediv.forEach(function(up){
+    up.addEventListener("dragenter",dragenter)
+    up.addEventListener("dragover",dragover)
+    up.addEventListener("dragleave",dragleave)
+    up.addEventListener("drop",drop)
+})
+
+
+function dragstart(e){
+    e.dataTransfer.setData("text",boxid)
+    console.log("dragstart")
+    console.log(boxid)
+}
+
+function dragenter(e){
+    e.preventDefault()
+    e.target.classList.add("drag-over")
+}
+
+function dragover(e){
+    e.preventDefault()
+    e.target.classList.add("drag-over")
+}
+
+function dragleave(e){
+    e.preventDefault()
+    e.target.classList.remove("drag-over")
+}
+
+function drop(e){
+    e.preventDefault()
+    e.target.classList.remove("drag-over")
+    const id=e.dataTransfer.getData("text")
+    const draggable=document.querySelectorAll("#"+id)
+    console.log(id)
+    document.querySelectorAll("#"+boxid)[0].style.top="0px"
+    document.querySelectorAll("#"+boxid)[0].style.left="10px"
+    let height=document.querySelectorAll("#"+boxid)[0].style.height
+    console.log(height)
+    let time=parseInt(height)/30
+    console.log("time="+time)
+    e.target.appendChild(draggable[0])
+    draggable[0].addEventListener("dragstart",dragstart)
+    console.log(e.target.id)
+    let divtarget=parseFloat(e.target.id)
+    console.log("divtarget="+divtarget)
+    let hour=Math.floor(divtarget)
+    console.log("hour="+hour)
+    let min=(divtarget-hour)*60
+    min=min.toFixed(0)
+    if(hour<10){
+        hour="0"+hour
+    }
+    if(min<10){
+        min="0"+min
+    }
+    let starttime=hour+":"+min
+    console.log("starttime="+starttime)
+    document.getElementById(boxid+"starttime").innerHTML=`開始時間: ${starttime}`
+    let endhr=parseInt(hour)+parseInt(time)
+    let num=time
+    let decimalonly=num%1*10
+    console.log("decimalOnly="+decimalonly)
+    let endmin=parseInt(min)+((decimalonly/5)*30)
+    console.log("min="+min)
+    if(endhr<10){
+        endhr="0"+endhr
+    }
+    if(endmin<10){
+        endmin="0"+endmin
+    }
+    if(endmin==60){
+        endmin="00"
+    }
+    let endtime=endhr+":"+endmin
+    document.getElementById(boxid+"endtime").innerHTML=`結束時間: ${endtime}`
+    console.log("endmin="+endmin)
+    console.log("endhr="+endhr)
+}
