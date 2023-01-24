@@ -4,7 +4,6 @@ let loggout=document.getElementById("loggout-button")
 
 let workbox=document.getElementsByClassName("work-box")
 let button=document.getElementsByClassName("todobut")
-
 let updownbut=document.getElementById("updownbut")
 //訂定變數
 
@@ -47,6 +46,7 @@ document.querySelectorAll(".todo").forEach(function(element){
         down=true
     })
 })
+
 document.querySelectorAll(".todo").forEach(function(element){
     element.addEventListener("mousemove",function(event){
         if(down==true){
@@ -54,6 +54,7 @@ document.querySelectorAll(".todo").forEach(function(element){
         }
     })
 })
+
 document.querySelectorAll(".todo").forEach(function(element){
     element.addEventListener("mouseup",function(){
         if(move==true){
@@ -62,15 +63,13 @@ document.querySelectorAll(".todo").forEach(function(element){
     })
 })
 
-console.log(updownbut.value)
 if(updownbut.value=="升冪"){
+    let upusertablediv=document.querySelectorAll(".upusertablediv")
     let boxid
     var box
     document.querySelectorAll('.work-box').forEach(function(element){
         element.addEventListener("mousedown",function(){
-            console.log("mousedown")
             boxid=this.id//取得id
-            console.log(boxid)
             down=false
             move=false
             box=document.querySelectorAll("#"+boxid)
@@ -79,9 +78,6 @@ if(updownbut.value=="升冪"){
             })
         })
     })
-
-    let upusertablediv=document.querySelectorAll(".upusertablediv")
-
     upusertablediv.forEach(function(up){
         up.addEventListener("dragenter",dragenter)
         up.addEventListener("dragover",dragover)
@@ -89,11 +85,8 @@ if(updownbut.value=="升冪"){
         up.addEventListener("drop",drop)
     })
 
-
     function dragstart(e){
         e.dataTransfer.setData("text",boxid)
-        console.log("dragstart")
-        console.log(boxid)
     }
 
     function dragenter(e){
@@ -116,21 +109,14 @@ if(updownbut.value=="升冪"){
         e.target.classList.remove("drag-over")
         const id=e.dataTransfer.getData("text")
         const draggable=document.querySelectorAll("#"+id)
-        console.log(id)
         document.querySelectorAll("#"+boxid)[0].style.top="0px"
         document.querySelectorAll("#"+boxid)[0].style.left="10px"
         let height=document.querySelectorAll("#"+boxid)[0].style.height
-        console.log(height)
         let time=parseInt(height)/30
-        console.log("time="+time)
         e.target.appendChild(draggable[0])
-        console.log(e.target.id)
         let divtarget=parseFloat(e.target.id)
-        console.log("divtarget="+divtarget)
         let hour=Math.floor(divtarget)
-        console.log("hour="+hour)
-        let min=(divtarget-hour)*60
-        min=min.toFixed(0)
+        let min=((divtarget-hour)*60).toFixed(0)
         if(hour<10){
             hour="0"+hour
         }
@@ -138,14 +124,10 @@ if(updownbut.value=="升冪"){
             min="0"+min
         }
         let starttime=hour+":"+min
-        console.log("starttime="+starttime)
-        document.getElementById(boxid+"starttime").innerHTML=`開始時間: ${starttime}`
         let endhr=parseInt(hour)+parseInt(time)
         let num=time
         let decimalonly=num%1*10
-        console.log("decimalOnly="+decimalonly)
         let endmin=parseInt(min)+((decimalonly/5)*30)
-        console.log("min="+min)
         if(endmin<10){
             endmin="0"+endmin
         }
@@ -157,18 +139,16 @@ if(updownbut.value=="升冪"){
             endhr="0"+endhr
         }
         let endtime=endhr+":"+endmin
+        document.getElementById(boxid+"starttime").innerHTML=`開始時間: ${starttime}`
         document.getElementById(boxid+"endtime").innerHTML=`結束時間: ${endtime}`
-        console.log("endmin="+endmin)
-        console.log("endhr="+endhr)
     }
 }else{
+    let upusertablediv=document.querySelectorAll(".downusertablediv")
     let boxid
     var box
     document.querySelectorAll('.work-box').forEach(function(element){
         element.addEventListener("mousedown",function(){
-            console.log("mousedown")
             boxid=this.id//取得id
-            console.log(boxid)
             down=false
             move=false
             box=document.querySelectorAll("#"+boxid)
@@ -178,15 +158,12 @@ if(updownbut.value=="升冪"){
         })
     })
 
-    let upusertablediv=document.querySelectorAll(".downusertablediv")
-
     upusertablediv.forEach(function(up){
         up.addEventListener("dragenter",dragenter)
         up.addEventListener("dragover",dragover)
         up.addEventListener("dragleave",dragleave)
         up.addEventListener("drop",drop)
     })
-
 
     function dragstart(e){
         e.dataTransfer.setData("text",boxid)
@@ -214,21 +191,14 @@ if(updownbut.value=="升冪"){
         e.target.classList.remove("drag-over")
         const id=e.dataTransfer.getData("text")
         const draggable=document.querySelectorAll("#"+id)
-        console.log(id)
         document.querySelectorAll("#"+boxid)[0].style.top="0px"
         document.querySelectorAll("#"+boxid)[0].style.left="10px"
         let height=document.querySelectorAll("#"+boxid)[0].style.height
-        console.log(height)
         let time=parseInt(height)/30
-        console.log("time="+time)
         e.target.appendChild(draggable[0])
-        console.log(e.target.id)
         let divtarget=parseFloat(e.target.id)
-        console.log("divtarget="+divtarget)
         let hour=Math.floor(divtarget)
-        console.log("hour="+hour)
-        let min=(divtarget-hour)*60
-        min=min.toFixed(0)
+        let min=((divtarget-hour)*60).toFixed(0)
         if(hour<10){
             hour="0"+hour
         }
@@ -236,14 +206,10 @@ if(updownbut.value=="升冪"){
             min="0"+min
         }
         let starttime=hour+":"+min
-        console.log("starttime="+starttime)
-
         let endhr=parseInt(hour)-parseInt(time)-1
         let num=time
         let decimalonly=num%1*10
-        console.log("decimalOnly="+decimalonly)
         let endmin=parseInt(min)+((decimalonly/5)*30)
-        console.log("min="+min)
         if(endmin<10){
             endmin="0"+endmin
         }
@@ -257,7 +223,5 @@ if(updownbut.value=="升冪"){
         let endtime=endhr+":"+endmin
         document.getElementById(boxid+"starttime").innerHTML=`開始時間: ${endtime}`
         document.getElementById(boxid+"endtime").innerHTML=`結束時間: ${starttime}`
-        console.log("endmin="+endmin)
-        console.log("endhr="+endhr)
     }
 }

@@ -88,7 +88,7 @@ body{
 }
 
 .drag-over{
-    border: dashed 1px rgb(42, 42, 42);
+    border-top: dashed 1px rgb(42, 42, 42);
 }
 
 .main-table{

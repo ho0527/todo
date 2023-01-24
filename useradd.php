@@ -136,8 +136,8 @@
                             ?>
                         </select><br>
                         <textarea rows="10" cols="25" placeholder="詳細敘述工作內容" name="detaile" id="detaile"><?= $row[7]; ?></textarea><br>
-                        <button tyep="submit" id="finish-but" name="finish-but" class="button" value="完成">完成</button>
                         <input type="submit" id="cancel-but" name="cancel-but" class="button" value="取消">
+                        <button tyep="submit" id="finish-but" name="finish-but" class="button" value="完成">完成</button>
                         <input type="button" id="del-but" class="button" value="刪除"><br><br>
                         <div id="confirm">
                             確定刪除?
@@ -198,8 +198,8 @@
                             <option>最速件</option>
                         </select><br>
                         <textarea rows="10" cols="25" placeholder="詳細敘述工作內容" name="detaile" id="detaile"></textarea><br>
-                        <button tyep="submit" id="finish-but" name="finish-but" class="button" value="完成">完成</button>
                         <input type="submit" id="cancel-but" name="cancel-but" class="button" value="取消">
+                        <button tyep="submit" id="finish-but" name="finish-but" class="button" value="完成">完成</button>
                         <script src="todaydate.js"></script>
                     </form><br><br>
                     <?php

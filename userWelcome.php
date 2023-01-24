@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>一般會員專區</title>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link href="index.css" rel="stylesheet">
     </head>
     <body>
@@ -98,10 +97,10 @@
                                     <tr>
                                         <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i,2,"0",STR_PAD_LEFT)."~".str_pad($i+2,2,"0",STR_PAD_LEFT)); ?></td>
                                         <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1 ?>">
-                                            <div id="<?= $i ?>up" class="usertablediv upusertablediv"></div>
-                                            <div id="<?= $i+0.5 ?>up" class="usertablediv upusertablediv"></div>
-                                            <div id="<?= $i+1 ?>up" class="userhalf usertablediv upusertablediv"></div>
-                                            <div id="<?= $i+1.5 ?>up" class="usertablediv upusertablediv"></div>
+                                            <div id="<?= $i ?>up" class="upusertablediv"></div>
+                                            <div id="<?= $i+0.5 ?>up" class="upusertablediv"></div>
+                                            <div id="<?= $i+1 ?>up" class="userhalf upusertablediv"></div>
+                                            <div id="<?= $i+1.5 ?>up" class="upusertablediv"></div>
                                         </td>
                                     </tr>
                                     <?php
@@ -114,10 +113,10 @@
                                         <form>
                                             <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT)); ?></td>
                                             <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1; ?>">
-                                                <div id="<?= $i+1.5 ?>down" class="usertablediv downusertablediv"></div>
-                                                <div id="<?= $i+1 ?>down" class="userhalf usertablediv downusertablediv"></div>
-                                                <div id="<?= $i+0.5 ?>down" class="usertablediv downusertablediv"></div>
-                                                <div id="<?= $i ?>down" class="usertablediv downusertablediv"></div>
+                                                <div id="<?= $i+1.5 ?>down" class="downusertablediv"></div>
+                                                <div id="<?= $i+1 ?>down" class="userhalf downusertablediv"></div>
+                                                <div id="<?= $i+0.5 ?>down" class="downusertablediv"></div>
+                                                <div id="<?= $i ?>down" class="downusertablediv"></div>
                                             </td>
                                         </form>
                                     </tr>
@@ -153,21 +152,19 @@
                         <button type="submit" id="loggout-button" class="loggout-button" name="logout">logout</button>
                         <button type="button" id="user-button" class="user-button">用戶</button>
                     </form>
-                    <form>
-                        <?php
-                            if(isset($_GET["preview"])){
-                                $id=$_GET["preview"];
-                                @$row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `todo` WHERE `id`='$id'"));
-                                ?>
-                                <div class="div">
-                                    標題: <?= @$row[1]; ?><br>
-                                    詳細內容: <?= @$row[7]; ?>
-                                    <button onclick="location.href='userWelcome.php'" id="button4">關閉</button>
-                                </div>
-                                <?php
-                            }
-                        ?>
-                    </form>
+                    <?php
+                        if(isset($_GET["preview"])){
+                            $id=$_GET["preview"];
+                            @$row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `todo` WHERE `id`='$id'"));
+                            ?>
+                            <div class="div">
+                                標題: <?= @$row[1]; ?><br>
+                                詳細內容: <?= @$row[7]; ?>
+                                <button onclick="location.href='userWelcome.php'" id="button4">關閉</button>
+                            </div>
+                            <?php
+                        }
+                    ?>
                     </td>
                 </tr>
             </table>

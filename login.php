@@ -30,6 +30,7 @@
                     session_unset();
                     $_SESSION["data"]=$row[4];
                     $_SESSION["date"]=date("Y-m-d");
+                    $_SESSION["starttime"]="升冪";
                 }
             }else{
                 $_SESSION["error"]=$_SESSION["error"]+1;

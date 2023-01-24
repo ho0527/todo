@@ -1,78 +1,56 @@
-const drags=document.querySelectorAll(".dragimg")
-const drops=document.querySelectorAll("#dropbox")
+let dragimg=document.querySelectorAll(".dragimg")
+let drops=document.querySelectorAll("#dropbox")
 let a=[]
-let b=["", "", ""]
-let temp
+let b=["","",""]
 
-drags.forEach(function(dragbox){
-    dragbox.addEventListener("dragstart", dragStart)
+dragimg.forEach(function(drag){
+    drag.addEventListener("dragstart",dragstart)
 })
 
 drops.forEach(function(dropbox){
-    dropbox.addEventListener("dragenter",dragEnter)
-    dropbox.addEventListener("dragover",dragOver)
-    dropbox.addEventListener("dragleave",dragLeave)
+    dropbox.addEventListener("dragenter",drag)
+    dropbox.addEventListener("dragover",drag)
+    dropbox.addEventListener("dragleave",drag)
     dropbox.addEventListener("drop",drop)
 })
 
-function dragStart(e){
-    e.dataTransfer.setData("text/plain",e.target.id)
-    console.log(e.target.id)
+function dragstart(event){
+    event.dataTransfer.setData("text",event.target.id)
 }
 
-function dragEnter(e){
-    e.preventDefault()
-    e.target.classList.add("drag-over")
-    e.target.style.cursor="grabbing"
+function drag(event){
+    event.preventDefault()
 }
 
-function dragOver(e){
-    e.preventDefault()
-    e.target.classList.add("drag-over")
-    e.target.style.cursor="grabbing"
-}
-
-function dragLeave(e){
-    e.preventDefault()
-    e.target.classList.remove("drag-over")
-    e.target.style.cursor="not-allowed"
-}
-
-function drop(e){
-    e.preventDefault()
-    e.target.classList.remove("drag-over")
-    const id=e.dataTransfer.getData("text/plain")
-    const draggable=document.getElementById(id)
+function drop(event){
+    let id=event.dataTransfer.getData("text")
+    let draggable=document.getElementById(id)
     a.push(id)
-    console.log(id)
-    console.log(a)
-    e.target.appendChild(draggable)
+    event.target.appendChild(draggable)
 }
 
 function loginclick(key){
     let username=document.getElementById("username").value
     let code=document.getElementById("code").value
-    for(i=0;i<3;i=i+1){
+    for(let i=0;i<3;i=i+1){
         b[i]=a[i]
     }
     if(key==0){
         b.sort()
-        tamp=b[0]
+        let temp=b[0]
         b[0]=b[2]
-        b[2]=tamp
-        console.log(b);
+        b[2]=temp
         if(JSON.stringify(a)==JSON.stringify(b)){
             location.href="login.php?username="+username+"&code="+code
         }else{
-            location.href="login.php?vererror=true&username="+username+"&code="+code
+            location.href="login.php?vererror=&username="+username+"&code="+code
         }
     }else{
         b.sort()
-        console.log(b);
         if(JSON.stringify(a)==JSON.stringify(b)){
             location.href="login.php?username="+username+"&code="+code
         }else{
-            location.href="login.php?vererror=true&username="+username+"&code="+code
+            location.href="login.php?vererror=&username="+username+"&code="+code
         }
     }
 }
