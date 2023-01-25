@@ -92,12 +92,10 @@
         }elseif($name=="升冪"){
             down($data,"name");
             ?><script>document.getElementById("name-up-down").value="降冪"</script><?php
+        }elseif(isset($number)||isset($user)||isset($code)||isset($name)){
+            header("location:userWelcome.php");
         }else{
             up($data,"usernumber");
-            ?><script>document.getElementById("num-up-down").value="升冪"
-            document.getElementById("user-up-down").value="升冪"
-            document.getElementById("code-up-down").value="升冪"
-            document.getElementById("name-up-down").value="升冪"</script><?php
         }
     }
 ?>

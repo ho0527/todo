@@ -113,10 +113,10 @@
                                         <form>
                                             <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT)); ?></td>
                                             <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1; ?>">
+                                                <div id="<?= $i+2 ?>down" class="downusertablediv"></div>
                                                 <div id="<?= $i+1.5 ?>down" class="downusertablediv"></div>
                                                 <div id="<?= $i+1 ?>down" class="userhalf downusertablediv"></div>
                                                 <div id="<?= $i+0.5 ?>down" class="downusertablediv"></div>
-                                                <div id="<?= $i ?>down" class="downusertablediv"></div>
                                             </td>
                                         </form>
                                     </tr>

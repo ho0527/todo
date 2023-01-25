@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="index.css" rel="Stylesheet">
         <title>重設帳密</title>
+        <link href="index.css" rel="Stylesheet">
     </head>
     <body>
         <div class="signupdiv">
@@ -35,7 +35,7 @@
                             </from>
                             <?php
                         }else{
-                            echo("帳號已被刪除"."<br>");
+                            ?><script>alert("帳號已被刪除!");location.href="adminWelcome.php"</script><?php
                         }
                     }
                 ?>
@@ -58,7 +58,7 @@
                             VALUES('$number','$row[1]','$row[2]','$row[3]','一般使用者','-','-','管理員編輯','$time')");
                             ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
                         }else{
-                            echo("請填寫帳密");
+                            ?><script>alert("請填寫帳密!");location.href="adminWelcome.php"</script><?php
                         }
                     }
                 }elseif($row=mysqli_fetch_row($admin)){
@@ -70,7 +70,7 @@
                             header("location:adminedit?number=$number");
                             ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
                         }else{
-                            echo("請填寫帳密");
+                            ?><script>alert("請填寫帳密!");location.href="adminWelcome.php"</script><?php
                         }
                     }
                 }

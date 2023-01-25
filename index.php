@@ -5,7 +5,7 @@
         <title>網站前台登入介面</title>
         <link href="index.css" rel="Stylesheet">
     </head>
-    <body class="body">
+    <body>
         <div class="indexdiv">
             <form>
                 <?php session_start(); ?>
