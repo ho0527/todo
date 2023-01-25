@@ -223,7 +223,7 @@
                     }elseif($start>=$end){
                         ?><script>alert("時間填寫錯誤");location.href="useradd.php"</script><?php
                     }else{
-                        if(isset($_GET["id"])){
+                        if(isset($id)){
                             if($row&&$row[0]!=$_SESSION["todoval"]){
                                 ?><script>alert("工作表已存在");location.href="useradd.php"</script><?php
                             }else{

@@ -43,35 +43,28 @@
             </form>
         </div>
         <?php
-            if(array_key_exists("enter",$_GET)){
+            if(isset($_GET["enter"])){
                 $username=$_GET["username"];
                 $code=$_GET["code"];
                 $name=$_GET["name"];
                 $user=mysqli_query($db,"SELECT*FROM `user` WHERE `userNumber`='$number'");
                 $admin=mysqli_query($db,"SELECT*FROM `admin` WHERE `adminNumber `='$number'");
-                if($row=mysqli_fetch_row($user)){
-                    if($row[4]==$number){
-                        if($username!=""&&$code!=""){
-                            mysqli_query($db,"UPDATE `user` SET `name`='$name',`userCode`='$code',`userName`='$username' WHERE `userNumber`='$number'");
-                            $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `user` WHERE `userNumber`='$number'"));
-                            mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
-                            VALUES('$number','$row[1]','$row[2]','$row[3]','一般使用者','-','-','管理員編輯','$time')");
-                            ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
-                        }else{
-                            ?><script>alert("請填寫帳密!");location.href="adminWelcome.php"</script><?php
-                        }
-                    }
-                }elseif($row=mysqli_fetch_row($admin)){
-                    if($row[4]==$number){
-                        if($username!=""&&$code!=""){
-                            mysqli_query($db,"UPDATE `admin` SET `name`='$name',`adminCode`='$code',`adminName`='$username' WHERE `adminnumber`='$number'");
-                            $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `admin` WHERE `adminNumber`='$number'"));
-                            mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`move`,`movetime`)VALUES('$number','$row[1]','$row[2]','$row[3]','管理者','管理員編輯','$time')");
-                            header("location:adminedit?number=$number");
-                            ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
-                        }else{
-                            ?><script>alert("請填寫帳密!");location.href="adminWelcome.php"</script><?php
-                        }
+                if($username==""&&$code==""){
+                    ?><script>alert("請填寫帳密!");location.href="adminWelcome.php"</script><?php
+                }elseif($row&&$row[0]!=$number){
+                    ?><script>alert("帳號已存在");location.href="adminWelcome.php"</script><?php
+                }else{
+                    if($row=mysqli_fetch_row($user)){
+                        mysqli_query($db,"UPDATE `user` SET `name`='$name',`userCode`='$code',`userName`='$username' WHERE `userNumber`='$number'");
+                        $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `user` WHERE `userNumber`='$number'"));
+                        mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`logintime`,`logouttime`,`move`,`movetime`)
+                        VALUES('$number','$row[1]','$row[2]','$row[3]','一般使用者','-','-','管理員編輯','$time')");
+                        ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
+                    }elseif($row=mysqli_fetch_row($admin)){
+                        mysqli_query($db,"UPDATE `admin` SET `name`='$name',`adminCode`='$code',`adminName`='$username' WHERE `adminnumber`='$number'");
+                        $row=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `admin` WHERE `adminNumber`='$number'"));
+                        mysqli_query($db,"INSERT INTO `data`(`usernumber`,`username`,`password`,`name`,`permission`,`move`,`movetime`)VALUES('$number','$row[1]','$row[2]','$row[3]','管理者','管理員編輯','$time')");
+                        ?><script>alert("更改成功!");location.href="adminWelcome.php"</script><?php
                     }
                 }
             }
