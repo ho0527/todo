@@ -125,14 +125,14 @@ function updrop(e){
     let time=parseInt(boxheight)/30
     let divtarget=parseFloat(e.target.id)
     let starthr=Math.floor(divtarget)
-    let min=((divtarget-starthr)*60).toFixed(0)
+    let startmin=((divtarget-starthr)*60).toFixed(0)
     if(starthr<10){
         starthr="0"+starthr
     }
-    if(min<10){
-        min="0"+min
+    if(startmin<10){
+        startmin="0"+startmin
     }
-    let starttime=starthr+":"+min
+    let starttime=starthr+":"+startmin
     let endhr=parseInt(starthr)+parseInt(time)
     let decimalonly=time%1*10
     let endmin=parseInt(min)+((decimalonly/5)*30)
@@ -148,8 +148,9 @@ function updrop(e){
     }
     let endtime=endhr+":"+endmin
     document.getElementById(boxid+"starttime").innerHTML=`開始時間: ${starttime}`
-    document.getElementById(boxid+"endtime").innerHTML=`開始時間: ${endtime}`
+    document.getElementById(boxid+"endtime").innerHTML=`結束時間: ${endtime}`
 }
+
 
 function downdrop(e){
     e.preventDefault()
@@ -162,18 +163,17 @@ function downdrop(e){
     let height=box.style.height
     let time=parseInt(height)/30
     let divtarget=parseFloat(e.target.id)
-    let hour=Math.floor(divtarget)
-    let min=((divtarget-hour)*60).toFixed(0)
-    if(hour<10){
-        hour="0"+hour
+    let starthr=Math.floor(divtarget)
+    let startmin=((divtarget-starthr)*60).toFixed(0)
+    if(starthr<10){
+        starthr="0"+starthr
     }
-    if(min<10){
-        min="0"+min
+    if(startmin<10){
+        startmin="0"+startmin
     }
-    let starttime=hour+":"+min
-    let endhr=parseInt(hour)-parseInt(time)
-    let num=time
-    let decimalonly=num%1*10
+    let starttime=starthr+":"+startmin
+    let endhr=parseInt(hr)-parseInt(time)
+    let decimalonly=time%1*10
     let endmin=parseInt(min)+((decimalonly/5)*30)
     if(endmin<10){
         endmin="0"+endmin

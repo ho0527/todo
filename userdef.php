@@ -35,8 +35,8 @@
                         <button type="submit" id="button3" class="todobut" name="edit" value="<?= $row[0]; ?>">edit</button>
                         <button type="submit" id="button4" class="todobut" name="preview" value="<?= $row[0]; ?>">預覽</button>
                         標題: <?php echo($row[1]); ?>
-                        <div id="downbox<?= $row[0]?>starttime">開始時間: <?php echo($row[3]); ?></div>
-                        <div id="downbox<?= $row[0]?>endtime">結束時間: <?php echo($row[4]); ?></div>
+                        <div id="downbox<?= $row[0] ?>starttime">開始時間: <?php echo($row[3]); ?></div>
+                        <div id="downbox<?= $row[0] ?>endtime">結束時間: <?php echo($row[4]); ?></div>
                         處理狀態: <?php echo($row[5]); ?><br>
                         優先順序: <?php echo($row[6]); ?><br>
                         詳細內容: <?php echo($row[7]); ?><br>

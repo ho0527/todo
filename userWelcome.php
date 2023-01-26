@@ -24,12 +24,6 @@
                                 <input type="date" value="<?= $date ?>" name="date">
                                 <button type="submit" name="enter" id="date-button">送出</button>
                         </form>
-                        <?php
-                            if(isset($_GET["enter"])){
-                                @$_SESSION["date"]=$_GET["date"];
-                                header("location:userWelcome.php");
-                            }
-                        ?>
                     </class>
                 </td>
                 <td class="title">一般會員專區</td>
@@ -165,10 +159,10 @@
                             <?php
                         }
                     ?>
-                    </td>
-                </tr>
-            </table>
-            <form>
+                </td>
+            </tr>
+        </table>
+        <form>
             <?php
                 if(isset($_SESSION["priority"])||isset($_SESSION["deal"])){
                     @$priority=$_SESSION["priority"];
@@ -228,6 +222,10 @@
                         $_SESSION["starttime"]="升冪";
                     }
                     ?><script>location.href="userWelcome.php"</script><?php
+                }
+                if(isset($_GET["enter"])){
+                    @$_SESSION["date"]=$_GET["date"];
+                    header("location:userWelcome.php");
                 }
             ?>
         </form>
