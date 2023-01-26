@@ -20,7 +20,7 @@
                 <?php
                     for($i=0;$i<3;$i=$i+1){
                         $str=range("a","z");
-                        $finalStr = $str[rand(0,25)];
+                        $finalStr=$str[rand(0,25)];
                         ?>
                         <div class="dragbox" id="dragbox">
                             <img src="verifyCode.php?val=<?=$finalStr?>" id="<?= $finalStr ?>" class="dragimg" draggable="true">
@@ -51,7 +51,7 @@
                     }
                     if(isset($_GET["clear"])){
                         session_unset();
-                        header('location:index.php');
+                        header("location:index.php");
                     }
                 ?>
             </form>
