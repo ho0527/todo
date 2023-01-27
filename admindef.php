@@ -46,8 +46,8 @@
         while($row=mysqli_fetch_assoc($data)){
             array_push($a,$row);
         }
-        for($i=0;$i<sizeof($a)-1;$i=$i+1){
-            for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
+        for($i=0;$i<count($a)-1;$i=$i+1){
+            for($j=0;$j<count($a)-$i-1;$j=$j+1){
                 if($a[$j][$comper]>$a[$j+1][$comper]){
                     $tamp=$a[$j];
                     $a[$j]=$a[$j+1];
@@ -63,8 +63,8 @@
         while($row=mysqli_fetch_assoc($data)){
             array_push($a,$row);
         }
-        for($i=0;$i<sizeof($a)-1;$i=$i+1){
-            for($j=0;$j<sizeof($a)-$i-1;$j=$j+1){
+        for($i=0;$i<count($a)-1;$i=$i+1){
+            for($j=0;$j<count($a)-$i-1;$j=$j+1){
                 if($a[$j][$comper]<$a[$j+1][$comper]){
                     $tamp=$a[$j];
                     $a[$j]=$a[$j+1];

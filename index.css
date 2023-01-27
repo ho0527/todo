@@ -5,6 +5,11 @@ body{
     user-select: none;
 }
 
+table{
+    border-collapse:collapse;
+    vertical-align:top;
+}
+
 .indextitle{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
@@ -317,22 +322,9 @@ body{
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
 }
 
-.buttoncof{
-    border-radius: 25px;
-    width: 55px;
-    height: 20px;
-    border: 1px black solid;
-    background-color: white;
-}
-
 .table4but{
     width: 150px;
     text-align: center;
-}
-
-table{
-    border-collapse:collapse;
-    vertical-align:top;
 }
 
 .upusertablediv{

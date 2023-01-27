@@ -135,14 +135,14 @@
                                 }
                             ?>
                         </select><br>
-                        <textarea rows="10" cols="25" placeholder="詳細敘述工作內容" name="detaile" id="detaile"><?= $row[7]; ?></textarea><br>
+                        <textarea rows="7" cols="25" placeholder="詳細敘述工作內容" name="detaile" id="detaile"><?= $row[7]; ?></textarea><br>
                         <input type="submit" id="cancel-but" name="cancel-but" class="button" value="取消">
                         <button tyep="submit" id="finish-but" name="finish-but" class="button" value="完成">完成</button>
                         <input type="button" id="del-but" class="button" value="刪除"><br><br>
                         <div id="confirm">
                             確定刪除?
-                            <input type="submit" name="confirm-but" class="buttoncof" value="確定">
-                            <input type="button" name="no-but" value="取消" class="buttoncof" onclick="location.href='useradd.php'"><br>
+                            <input type="submit" name="confirm-but" class="button" value="確定">
+                            <input type="button" name="no-but" class="button" value="取消" onclick="location.href='useradd.php'"><br>
                         </div>
                         <script src="todaydate.js"></script>
                     </form><br>
@@ -151,7 +151,7 @@
                     ?>
                     <form>
                         <div class="indextitle">新增工作</div>
-                        工作標題:<input type="text" name="title" value="work<?php ?>" id="title"><br>
+                        工作標題:<input type="text" name="title" value="work" id="title"><br>
                         日期: <input type="date" value="<?= $_SESSION["date"] ?>" name="date"><br>
                         開始時間:
                         <select name="start-hr">
@@ -216,8 +216,7 @@
                     $detail=$_GET["detaile"];
                     $start=($starthr.":".$startmin);
                     $end=($endhr.":".$endmin);
-                    $todo=mysqli_query($db,"SELECT*FROM `todo` WHERE `title`='$title'");
-                    $row=mysqli_fetch_row($todo);
+                    $todo=mysqli_fetch_row(mysqli_query($db,"SELECT*FROM `todo` WHERE `title`='$title'"));
                     if($starthr=="hr"||$startmin=="min"||$endhr=="hr"||$endmin=="min"||$title==""){
                         ?><script>alert("請填寫時間/標題");location.href="useradd.php"</script><?php
                     }elseif($start>=$end){

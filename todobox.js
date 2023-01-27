@@ -135,7 +135,7 @@ function updrop(e){
     let starttime=starthr+":"+startmin
     let endhr=parseInt(starthr)+parseInt(time)
     let decimalonly=time%1*10
-    let endmin=parseInt(min)+((decimalonly/5)*30)
+    let endmin=parseInt(startmin)+((decimalonly/5)*30)
     if(endmin<10){
         endmin="0"+endmin
     }
@@ -172,9 +172,9 @@ function downdrop(e){
         startmin="0"+startmin
     }
     let starttime=starthr+":"+startmin
-    let endhr=parseInt(hr)-parseInt(time)
+    let endhr=parseInt(starthr)-parseInt(time)
     let decimalonly=time%1*10
-    let endmin=parseInt(min)+((decimalonly/5)*30)
+    let endmin=parseInt(startmin)+((decimalonly/5)*30)
     if(endmin<10){
         endmin="0"+endmin
     }

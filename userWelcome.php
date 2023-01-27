@@ -104,15 +104,13 @@
                                 for($i=22;$i>=0;$i=$i-2){
                                     ?>
                                     <tr>
-                                        <form>
-                                            <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT)); ?></td>
-                                            <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1; ?>">
-                                                <div id="<?= $i+2 ?>down" class="downusertablediv"></div>
-                                                <div id="<?= $i+1.5 ?>down" class="downusertablediv"></div>
-                                                <div id="<?= $i+1 ?>down" class="userhalf downusertablediv"></div>
-                                                <div id="<?= $i+0.5 ?>down" class="downusertablediv"></div>
-                                            </td>
-                                        </form>
+                                        <td class="todo-title-main<?= $m%2+1; ?>"><?= str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT); ?></td>
+                                        <td class="todo-main<?= $m%2+1; ?>">
+                                            <div id="<?= $i+2; ?>down" class="downusertablediv"></div>
+                                            <div id="<?= $i+1.5; ?>down" class="downusertablediv"></div>
+                                            <div id="<?= $i+1; ?>down" class="userhalf downusertablediv"></div>
+                                            <div id="<?= $i+0.5; ?>down" class="downusertablediv"></div>
+                                        </td>
                                     </tr>
                                     <?php
                                     $m=$m+1;
