@@ -14,17 +14,15 @@
         ?>
         <table class="main-table">
             <tr>
-                <td class="user-table2">
-                    <class class="date-time">
-                        <form>
-                            <?php
-                                $date=$_SESSION["date"];
-                                echo("目前日期: ".$date);
-                            ?><br>
-                                <input type="date" value="<?= $date ?>" name="date">
-                                <button type="submit" name="enter" id="date-button">送出</button>
-                        </form>
-                    </class>
+                <td class="date">
+                    <form>
+                        <?php
+                            $date=$_SESSION["date"];
+                            echo("目前日期: ".$date);
+                        ?><br>
+                            <input type="date" value="<?= $date ?>" name="date">
+                            <button type="submit" name="enter" id="date-button">送出</button>
+                    </form>
                 </td>
                 <td class="title">一般會員專區</td>
                 <td class="all" rowspan="2">

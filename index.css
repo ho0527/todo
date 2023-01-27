@@ -157,10 +157,12 @@ table{
     text-align: center;
 }
 
-.user-table2{
+.date{
     border: 0.5px black solid;
     width:985px;
     text-align: center;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .user-table4{
@@ -274,11 +276,6 @@ table{
     right:1px;
     font-size: 1px;
     cursor: pointer;
-}
-
-.date-time{
-    font-size: 25px;
-    font-weight: bold;
 }
 
 .right{

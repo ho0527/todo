@@ -93,7 +93,7 @@
             down($data,"name");
             ?><script>document.getElementById("name-up-down").value="降冪"</script><?php
         }elseif(isset($number)||isset($user)||isset($code)||isset($name)){
-            header("location:userWelcome.php");
+            header("location:adminWelcome.php");
         }else{
             up($data,"usernumber");
         }
