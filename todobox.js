@@ -68,14 +68,14 @@ document.querySelectorAll(".todo").forEach(function(element){
 let upusertablediv=document.querySelectorAll(".upusertablediv")
 let downusertablediv=document.querySelectorAll(".downusertablediv")
 let boxid
-var box
+var boxs
 document.querySelectorAll('.work-box').forEach(function(element){
     element.addEventListener("mousedown",function(){
         boxid=this.id//取得id
         down=false
         move=false
-        box=document.querySelectorAll("#"+boxid)
-        box.forEach(function(box){
+        boxs=document.querySelectorAll("#"+boxid)
+        boxs.forEach(function(box){
             box.addEventListener("dragstart",dragstart)
         })
     })
@@ -117,25 +117,25 @@ function dragleave(e){
 function updrop(e){
     e.target.classList.remove("drag-over")
     let id=e.dataTransfer.getData("text")
-    let draggable=document.getElementById(id)
-    e.target.appendChild(draggable)
-    draggable.style.top="0px"
-    draggable.style.left="10px"
-    let boxheight=draggable.style.height
+    let box=document.getElementById(id)
+    e.target.appendChild(box)
+    box.style.top="0px"
+    box.style.left="10px"
+    let boxheight=box.style.height
     let time=parseInt(boxheight)/30
     let divtarget=parseFloat(e.target.id)
     let starthr=Math.floor(divtarget)
-    let min=((divtarget-starthr)*60).toFixed(0)
+    let startmin=((divtarget-starthr)*60).toFixed(0)
     if(starthr<10){
         starthr="0"+starthr
     }
-    if(min<10){
-        min="0"+min
+    if(startmin<10){
+        startmin="0"+startmin
     }
-    let starttime=starthr+":"+min
+    let starttime=starthr+":"+startmin
     let endhr=parseInt(starthr)+parseInt(time)
     let decimalonly=time%1*10
-    let endmin=parseInt(min)+((decimalonly/5)*30)
+    let endmin=parseInt(startmin)+((decimalonly/5)*30)
     if(endmin<10){
         endmin="0"+endmin
     }
@@ -148,33 +148,33 @@ function updrop(e){
     }
     let endtime=endhr+":"+endmin
     document.getElementById(boxid+"starttime").innerHTML=`開始時間: ${starttime}`
-    document.getElementById(boxid+"endtime").innerHTML=`開始時間: ${endtime}`
+    document.getElementById(boxid+"endtime").innerHTML=`結束時間: ${endtime}`
 }
+
 
 function downdrop(e){
     e.preventDefault()
     e.target.classList.remove("drag-over")
     const id=e.dataTransfer.getData("text")
-    const draggable=document.getElementById(id)
-    e.target.appendChild(draggable)
-    draggable.style.top="0px"
-    draggable.style.left="10px"
-    let height=draggable.style.height
+    const box=document.getElementById(id)
+    e.target.appendChild(box)
+    box.style.top="0px"
+    box.style.left="10px"
+    let height=box.style.height
     let time=parseInt(height)/30
     let divtarget=parseFloat(e.target.id)
-    let hour=Math.floor(divtarget)
-    let min=((divtarget-hour)*60).toFixed(0)
-    if(hour<10){
-        hour="0"+hour
+    let starthr=Math.floor(divtarget)
+    let startmin=((divtarget-starthr)*60).toFixed(0)
+    if(starthr<10){
+        starthr="0"+starthr
     }
-    if(min<10){
-        min="0"+min
+    if(startmin<10){
+        startmin="0"+startmin
     }
-    let starttime=hour+":"+min
-    let endhr=parseInt(hour)-parseInt(time)
-    let num=time
-    let decimalonly=num%1*10
-    let endmin=parseInt(min)+((decimalonly/5)*30)
+    let starttime=starthr+":"+startmin
+    let endhr=parseInt(starthr)-parseInt(time)
+    let decimalonly=time%1*10
+    let endmin=parseInt(startmin)+((decimalonly/5)*30)
     if(endmin<10){
         endmin="0"+endmin
     }

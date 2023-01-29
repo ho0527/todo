@@ -14,23 +14,15 @@
         ?>
         <table class="main-table">
             <tr>
-                <td class="user-table2">
-                    <class class="date-time">
-                        <form>
-                            <?php
-                                $date=$_SESSION["date"];
-                                echo("目前日期: ".$date);
-                            ?><br>
-                                <input type="date" value="<?= $date ?>" name="date">
-                                <button type="submit" name="enter" id="date-button">送出</button>
-                        </form>
+                <td class="date">
+                    <form>
                         <?php
-                            if(isset($_GET["enter"])){
-                                @$_SESSION["date"]=$_GET["date"];
-                                header("location:userWelcome.php");
-                            }
-                        ?>
-                    </class>
+                            $date=$_SESSION["date"];
+                            echo("目前日期: ".$date);
+                        ?><br>
+                            <input type="date" value="<?= $date ?>" name="date">
+                            <button type="submit" name="enter" id="date-button">送出</button>
+                    </form>
                 </td>
                 <td class="title">一般會員專區</td>
                 <td class="all" rowspan="2">
@@ -110,15 +102,13 @@
                                 for($i=22;$i>=0;$i=$i-2){
                                     ?>
                                     <tr>
-                                        <form>
-                                            <td class="todo-title-main<?= $m%2+1; ?>"><?php echo(str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT)); ?></td>
-                                            <td class="todo-main<?= $m%2+1; ?>" id="<?= $m+1; ?>">
-                                                <div id="<?= $i+2 ?>down" class="downusertablediv"></div>
-                                                <div id="<?= $i+1.5 ?>down" class="downusertablediv"></div>
-                                                <div id="<?= $i+1 ?>down" class="userhalf downusertablediv"></div>
-                                                <div id="<?= $i+0.5 ?>down" class="downusertablediv"></div>
-                                            </td>
-                                        </form>
+                                        <td class="todo-title-main<?= $m%2+1; ?>"><?= str_pad($i+2,2,"0",STR_PAD_LEFT)."~".str_pad($i,2,"0",STR_PAD_LEFT); ?></td>
+                                        <td class="todo-main<?= $m%2+1; ?>">
+                                            <div id="<?= $i+2; ?>down" class="downusertablediv"></div>
+                                            <div id="<?= $i+1.5; ?>down" class="downusertablediv"></div>
+                                            <div id="<?= $i+1; ?>down" class="userhalf downusertablediv"></div>
+                                            <div id="<?= $i+0.5; ?>down" class="downusertablediv"></div>
+                                        </td>
                                     </tr>
                                     <?php
                                     $m=$m+1;
@@ -165,10 +155,10 @@
                             <?php
                         }
                     ?>
-                    </td>
-                </tr>
-            </table>
-            <form>
+                </td>
+            </tr>
+        </table>
+        <form>
             <?php
                 if(isset($_SESSION["priority"])||isset($_SESSION["deal"])){
                     @$priority=$_SESSION["priority"];
@@ -227,6 +217,10 @@
                     }else{
                         $_SESSION["starttime"]="升冪";
                     }
+                    ?><script>location.href="userWelcome.php"</script><?php
+                }
+                if(isset($_GET["enter"])){
+                    @$_SESSION["date"]=$_GET["date"];
                     ?><script>location.href="userWelcome.php"</script><?php
                 }
             ?>

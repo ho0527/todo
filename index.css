@@ -2,6 +2,12 @@ body{
     width: 1875px;
     height: 900px;
     background-color:rgba(244, 236, 236, 0.37);
+    user-select: none;
+}
+
+table{
+    border-collapse:collapse;
+    vertical-align:top;
 }
 
 .indextitle{
@@ -33,7 +39,6 @@ body{
     height: 280px;
     width: 275px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
-    user-select: none;
 }
 
 .input{
@@ -95,7 +100,6 @@ body{
     border: 1px black solid;
     color: rgb(0, 0, 0);
     text-align: center;
-    user-select: none;
 }
 
 /*admin table*/
@@ -117,7 +121,6 @@ body{
     height: 200px;
     width: 300px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
-    user-select: none;
 }
 
 .admin-title{
@@ -154,10 +157,12 @@ body{
     text-align: center;
 }
 
-.user-table2{
+.date{
     border: 0.5px black solid;
     width:985px;
     text-align: center;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .user-table4{
@@ -273,11 +278,6 @@ body{
     cursor: pointer;
 }
 
-.date-time{
-    font-size: 25px;
-    font-weight: bold;
-}
-
 .right{
     float: right;
 }
@@ -317,25 +317,11 @@ body{
     height: 350px;
     width: 300px;
     box-shadow: 5px 5px 5px rgba(110, 110, 110, 0.422);
-    user-select: none;
-}
-
-.buttoncof{
-    border-radius: 25px;
-    width: 55px;
-    height: 20px;
-    border: 1px black solid;
-    background-color: white;
 }
 
 .table4but{
     width: 150px;
     text-align: center;
-}
-
-table{
-    border-collapse:collapse;
-    vertical-align:top;
 }
 
 .upusertablediv{
