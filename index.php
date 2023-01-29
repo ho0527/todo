@@ -23,7 +23,7 @@
                         $finalStr=$str[rand(0,25)];
                         ?>
                         <div class="dragbox" id="dragbox">
-                            <img src="verifyCode.php?val=<?=$finalStr?>" id="<?= $finalStr ?>" class="dragimg" draggable="true">
+                            <img src="verifyCode.php?val=<?= $finalStr ?>" id="<?= $finalStr ?>" class="dragimg" draggable="true">
                         </div>
                         <?php
                     }

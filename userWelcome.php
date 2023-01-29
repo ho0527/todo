@@ -221,7 +221,7 @@
                 }
                 if(isset($_GET["enter"])){
                     @$_SESSION["date"]=$_GET["date"];
-                    header("location:userWelcome.php");
+                    ?><script>location.href="userWelcome.php"</script><?php
                 }
             ?>
         </form>
