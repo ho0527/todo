@@ -14,7 +14,7 @@
                     帳號: <input type="text" name="username" id="username" value="<?= @$_SESSION["username"] ?>" class="input"><br>
                 </div>
                 <div class="text">
-                    密碼: <input type="password" name="code" id="code" value="<?= @$_SESSION["password"] ?>" class="input"><br>
+                    密碼: <input type="text" name="code" id="code" value="<?= @$_SESSION["password"] ?>" class="input"><br>
                 </div>
                 <class class="text">驗證碼:</class><br>
                 <?php
@@ -22,7 +22,7 @@
                         $str=range("a","z");
                         $finalStr=$str[rand(0,25)];
                         ?>
-                        <div class="dragbox" id="dragbox">
+                        <div class="dragbox">
                             <img src="verifyCode.php?val=<?= $finalStr ?>" id="<?= $finalStr ?>" class="dragimg" draggable="true">
                         </div>
                         <?php
