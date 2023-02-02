@@ -120,8 +120,6 @@
                 <td class="user-table4">
                     <form>
                         開始時間: <input type="submit" name="starttime" value="<?= $start ?>" class="table4but" id="updownbut"><br>
-                    </form>
-                    <form>
                         處理情形:
                         <select class="table4but" name="deal-select">
                             <option>篩選器</option>
